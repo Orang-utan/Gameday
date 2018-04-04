@@ -7,17 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+        
+        let authListener = Auth.auth().addStateDidChangeListener { auth, user in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if user != nil {
+                UserService.observeUserProfile(user!.uid) {
+                    userProfile in
+                    UserService.currentUserProfile = userProfile
+                }
+                
+                let controller = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
+            } else {
+                UserService.currentUserProfile = nil
+                let controller = storyboard.instantiateViewController(withIdentifier: "SignInOptionsController") 
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
+            }
+            
+        }
+        
         return true
     }
+    
+  
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

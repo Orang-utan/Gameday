@@ -7,7 +7,25 @@
 		<key>Gameday-V2.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>656FF12520706C6F00D5831D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>656FF13920706C7000D5831D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>656FF14420706C7000D5831D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

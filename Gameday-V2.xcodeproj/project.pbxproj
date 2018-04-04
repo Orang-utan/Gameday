@@ -7,13 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5158FDEFF16E9842C55F5999 /* Pods_Gameday_V2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C0A4AF6AB21BAEB4C7D0BF /* Pods_Gameday_V2UITests.framework */; };
+		654632322070834C00C9C763 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654632312070834C00C9C763 /* CreateGameViewController.swift */; };
+		654632352070897700C9C763 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654632342070897700C9C763 /* SearchTextField.swift */; };
+		654632372070898900C9C763 /* SportsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654632362070898900C9C763 /* SportsGame.swift */; };
 		656FF12A20706C6F00D5831D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656FF12920706C6F00D5831D /* AppDelegate.swift */; };
-		656FF12C20706C6F00D5831D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656FF12B20706C6F00D5831D /* ViewController.swift */; };
+		656FF12C20706C6F00D5831D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656FF12B20706C6F00D5831D /* HomeViewController.swift */; };
 		656FF12F20706C6F00D5831D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656FF12D20706C6F00D5831D /* Main.storyboard */; };
 		656FF13120706C7000D5831D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656FF13020706C7000D5831D /* Assets.xcassets */; };
 		656FF13420706C7000D5831D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656FF13220706C7000D5831D /* LaunchScreen.storyboard */; };
 		656FF13F20706C7000D5831D /* Gameday_V2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656FF13E20706C7000D5831D /* Gameday_V2Tests.swift */; };
 		656FF14A20706C7000D5831D /* Gameday_V2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656FF14920706C7000D5831D /* Gameday_V2UITests.swift */; };
+		6579EFFB20727B7900D98D85 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6579EFFA20727B7900D98D85 /* ImageService.swift */; };
+		65A57B1D20715DD800E2F8C1 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B1C20715DD800E2F8C1 /* Checkbox.swift */; };
+		65A57B1F2071667A00E2F8C1 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B1E2071667A00E2F8C1 /* GameTableViewCell.swift */; };
+		65A57B21207179C100E2F8C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65A57B20207179C100E2F8C1 /* GoogleService-Info.plist */; };
+		65A57B2320717D0300E2F8C1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B2220717D0300E2F8C1 /* SignUpViewController.swift */; };
+		65A57B25207187C100E2F8C1 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A57B24207187C100E2F8C1 /* AccountViewController.swift */; };
+		65B178902071B77300B35549 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1788F2071B77300B35549 /* UserProfile.swift */; };
+		65B178922071B7C400B35549 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B178912071B7C400B35549 /* UserService.swift */; };
+		65B178942071DD0E00B35549 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B178932071DD0E00B35549 /* DetailsViewController.swift */; };
+		65E2390E20710AB9004A5FFE /* SignInOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */; };
+		65E2391020715021004A5FFE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2390F20715021004A5FFE /* DateUtil.swift */; };
+		71F51DF120747FEF00F35FAA /* RxFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F51DF020747FEF00F35FAA /* RxFirestore.swift */; };
+		71F51DF32074801C00F35FAA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F51DF22074801C00F35FAA /* Extensions.swift */; };
+		7EDBA956ABFFCA0374EB765F /* Pods_Gameday_V2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1BD5489890FB3EB16330B8 /* Pods_Gameday_V2Tests.framework */; };
+		963C45F0A9F84D23891306E3 /* Pods_Gameday_V2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 425A9CAC8DD9D9047D4C66FE /* Pods_Gameday_V2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +53,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041155903AAE88983025195D /* Pods-Gameday-V2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2Tests/Pods-Gameday-V2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1A1BD5489890FB3EB16330B8 /* Pods_Gameday_V2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gameday_V2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		425A9CAC8DD9D9047D4C66FE /* Pods_Gameday_V2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gameday_V2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59A4FAEF016A4F2EFE4760EA /* Pods-Gameday-V2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2/Pods-Gameday-V2.debug.xcconfig"; sourceTree = "<group>"; };
+		654632312070834C00C9C763 /* CreateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
+		654632342070897700C9C763 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		654632362070898900C9C763 /* SportsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsGame.swift; sourceTree = "<group>"; };
 		656FF12620706C6F00D5831D /* Gameday-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gameday-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		656FF12920706C6F00D5831D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		656FF12B20706C6F00D5831D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		656FF12B20706C6F00D5831D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		656FF12E20706C6F00D5831D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		656FF13020706C7000D5831D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		656FF13320706C7000D5831D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +73,24 @@
 		656FF14520706C7000D5831D /* Gameday-V2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Gameday-V2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		656FF14920706C7000D5831D /* Gameday_V2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameday_V2UITests.swift; sourceTree = "<group>"; };
 		656FF14B20706C7000D5831D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6579EFFA20727B7900D98D85 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		65A57B1C20715DD800E2F8C1 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		65A57B1E2071667A00E2F8C1 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		65A57B20207179C100E2F8C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65A57B2220717D0300E2F8C1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		65A57B24207187C100E2F8C1 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		65B1788F2071B77300B35549 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		65B178912071B7C400B35549 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		65B178932071DD0E00B35549 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOptionsViewController.swift; sourceTree = "<group>"; };
+		65E2390F20715021004A5FFE /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		71F51DF020747FEF00F35FAA /* RxFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxFirestore.swift; sourceTree = "<group>"; };
+		71F51DF22074801C00F35FAA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7F1D1D1E60947701FB205E1A /* Pods-Gameday-V2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2UITests/Pods-Gameday-V2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		9EB319C79EB84D7D349E9898 /* Pods-Gameday-V2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2/Pods-Gameday-V2.release.xcconfig"; sourceTree = "<group>"; };
+		C4C0A4AF6AB21BAEB4C7D0BF /* Pods_Gameday_V2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gameday_V2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2732358B6805BF1FCB4306 /* Pods-Gameday-V2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2Tests/Pods-Gameday-V2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		CD8248C263E5720D903E7795 /* Pods-Gameday-V2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2UITests/Pods-Gameday-V2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963C45F0A9F84D23891306E3 /* Pods_Gameday_V2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EDBA956ABFFCA0374EB765F /* Pods_Gameday_V2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +114,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5158FDEFF16E9842C55F5999 /* Pods_Gameday_V2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32985BC800EAB1F19093F3FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				425A9CAC8DD9D9047D4C66FE /* Pods_Gameday_V2.framework */,
+				1A1BD5489890FB3EB16330B8 /* Pods_Gameday_V2Tests.framework */,
+				C4C0A4AF6AB21BAEB4C7D0BF /* Pods_Gameday_V2UITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		654632332070895600C9C763 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				654632342070897700C9C763 /* SearchTextField.swift */,
+				65E2390F20715021004A5FFE /* DateUtil.swift */,
+				65A57B1C20715DD800E2F8C1 /* Checkbox.swift */,
+				65B178912071B7C400B35549 /* UserService.swift */,
+				6579EFFA20727B7900D98D85 /* ImageService.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		656FF11D20706C6F00D5831D = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +150,8 @@
 				656FF13D20706C7000D5831D /* Gameday-V2Tests */,
 				656FF14820706C7000D5831D /* Gameday-V2UITests */,
 				656FF12720706C6F00D5831D /* Products */,
+				ADB166C9F10C1D95B28917E9 /* Pods */,
+				32985BC800EAB1F19093F3FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +168,14 @@
 		656FF12820706C6F00D5831D /* Gameday-V2 */ = {
 			isa = PBXGroup;
 			children = (
-				656FF12920706C6F00D5831D /* AppDelegate.swift */,
-				656FF12B20706C6F00D5831D /* ViewController.swift */,
-				656FF12D20706C6F00D5831D /* Main.storyboard */,
-				656FF13020706C7000D5831D /* Assets.xcassets */,
-				656FF13220706C7000D5831D /* LaunchScreen.storyboard */,
+				71F51DEF20747FC200F35FAA /* Helpers */,
+				654632332070895600C9C763 /* Util */,
+				656FF157207070F100D5831D /* Models */,
+				656FF1582070715100D5831D /* Views */,
+				656FF1592070715800D5831D /* Controllers */,
+				656FF15A2070715D00D5831D /* Supporting Files */,
 				656FF13520706C7000D5831D /* Info.plist */,
+				65A57B20207179C100E2F8C1 /* GoogleService-Info.plist */,
 			);
 			path = "Gameday-V2";
 			sourceTree = "<group>";
@@ -125,6 +198,69 @@
 			path = "Gameday-V2UITests";
 			sourceTree = "<group>";
 		};
+		656FF157207070F100D5831D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				654632362070898900C9C763 /* SportsGame.swift */,
+				65B1788F2071B77300B35549 /* UserProfile.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		656FF1582070715100D5831D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				656FF12D20706C6F00D5831D /* Main.storyboard */,
+				656FF13220706C7000D5831D /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		656FF1592070715800D5831D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */,
+				65A57B2220717D0300E2F8C1 /* SignUpViewController.swift */,
+				656FF12B20706C6F00D5831D /* HomeViewController.swift */,
+				65A57B1E2071667A00E2F8C1 /* GameTableViewCell.swift */,
+				654632312070834C00C9C763 /* CreateGameViewController.swift */,
+				65B178932071DD0E00B35549 /* DetailsViewController.swift */,
+				65A57B24207187C100E2F8C1 /* AccountViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		656FF15A2070715D00D5831D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				656FF12920706C6F00D5831D /* AppDelegate.swift */,
+				656FF13020706C7000D5831D /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		71F51DEF20747FC200F35FAA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				71F51DF020747FEF00F35FAA /* RxFirestore.swift */,
+				71F51DF22074801C00F35FAA /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ADB166C9F10C1D95B28917E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59A4FAEF016A4F2EFE4760EA /* Pods-Gameday-V2.debug.xcconfig */,
+				9EB319C79EB84D7D349E9898 /* Pods-Gameday-V2.release.xcconfig */,
+				CB2732358B6805BF1FCB4306 /* Pods-Gameday-V2Tests.debug.xcconfig */,
+				041155903AAE88983025195D /* Pods-Gameday-V2Tests.release.xcconfig */,
+				CD8248C263E5720D903E7795 /* Pods-Gameday-V2UITests.debug.xcconfig */,
+				7F1D1D1E60947701FB205E1A /* Pods-Gameday-V2UITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +268,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 656FF14E20706C7000D5831D /* Build configuration list for PBXNativeTarget "Gameday-V2" */;
 			buildPhases = (
+				629F9CD22B96D674EC54F0C3 /* [CP] Check Pods Manifest.lock */,
 				656FF12220706C6F00D5831D /* Sources */,
 				656FF12320706C6F00D5831D /* Frameworks */,
 				656FF12420706C6F00D5831D /* Resources */,
+				CEC464D75D9F7419545BA325 /* [CP] Embed Pods Frameworks */,
+				E8D7D88609E55DE060A4943D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 656FF15120706C7000D5831D /* Build configuration list for PBXNativeTarget "Gameday-V2Tests" */;
 			buildPhases = (
+				8B87C81D92DACA92B5538811 /* [CP] Check Pods Manifest.lock */,
 				656FF13620706C7000D5831D /* Sources */,
 				656FF13720706C7000D5831D /* Frameworks */,
 				656FF13820706C7000D5831D /* Resources */,
+				F04C2B1C6D41A89F4359C1E7 /* [CP] Embed Pods Frameworks */,
+				FB4A13312B1595FA5F69782E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +309,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 656FF15420706C7000D5831D /* Build configuration list for PBXNativeTarget "Gameday-V2UITests" */;
 			buildPhases = (
+				764035AF0A6BB833986ACA7F /* [CP] Check Pods Manifest.lock */,
 				656FF14120706C7000D5831D /* Sources */,
 				656FF14220706C7000D5831D /* Frameworks */,
 				656FF14320706C7000D5831D /* Resources */,
+				BF8B46CB5AA7399018E0F1FD /* [CP] Embed Pods Frameworks */,
+				7A3D0632CD8451B2489B1398 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				656FF13420706C7000D5831D /* LaunchScreen.storyboard in Resources */,
+				65A57B21207179C100E2F8C1 /* GoogleService-Info.plist in Resources */,
 				656FF13120706C7000D5831D /* Assets.xcassets in Resources */,
 				656FF12F20706C6F00D5831D /* Main.storyboard in Resources */,
 			);
@@ -251,13 +397,215 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		629F9CD22B96D674EC54F0C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gameday-V2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		764035AF0A6BB833986ACA7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gameday-V2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A3D0632CD8451B2489B1398 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2UITests/Pods-Gameday-V2UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B87C81D92DACA92B5538811 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gameday-V2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF8B46CB5AA7399018E0F1FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2UITests/Pods-Gameday-V2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEC464D75D9F7419545BA325 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2/Pods-Gameday-V2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyPickerPopover/SwiftyPickerPopover.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPickerPopover.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2/Pods-Gameday-V2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8D7D88609E55DE060A4943D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2/Pods-Gameday-V2-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2/Pods-Gameday-V2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F04C2B1C6D41A89F4359C1E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2Tests/Pods-Gameday-V2Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB4A13312B1595FA5F69782E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2Tests/Pods-Gameday-V2Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		656FF12220706C6F00D5831D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				656FF12C20706C6F00D5831D /* ViewController.swift in Sources */,
+				65A57B1D20715DD800E2F8C1 /* Checkbox.swift in Sources */,
+				654632372070898900C9C763 /* SportsGame.swift in Sources */,
+				65A57B1F2071667A00E2F8C1 /* GameTableViewCell.swift in Sources */,
+				65E2390E20710AB9004A5FFE /* SignInOptionsViewController.swift in Sources */,
+				65A57B2320717D0300E2F8C1 /* SignUpViewController.swift in Sources */,
+				654632322070834C00C9C763 /* CreateGameViewController.swift in Sources */,
+				65B178922071B7C400B35549 /* UserService.swift in Sources */,
+				656FF12C20706C6F00D5831D /* HomeViewController.swift in Sources */,
+				6579EFFB20727B7900D98D85 /* ImageService.swift in Sources */,
+				71F51DF120747FEF00F35FAA /* RxFirestore.swift in Sources */,
 				656FF12A20706C6F00D5831D /* AppDelegate.swift in Sources */,
+				65B178902071B77300B35549 /* UserProfile.swift in Sources */,
+				654632352070897700C9C763 /* SearchTextField.swift in Sources */,
+				65B178942071DD0E00B35549 /* DetailsViewController.swift in Sources */,
+				71F51DF32074801C00F35FAA /* Extensions.swift in Sources */,
+				65E2391020715021004A5FFE /* DateUtil.swift in Sources */,
+				65A57B25207187C100E2F8C1 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,16 +776,15 @@
 		};
 		656FF14F20706C7000D5831D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59A4FAEF016A4F2EFE4760EA /* Pods-Gameday-V2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gameday.Gameday-V2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,16 +793,15 @@
 		};
 		656FF15020706C7000D5831D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EB319C79EB84D7D349E9898 /* Pods-Gameday-V2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gameday.Gameday-V2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,17 +810,14 @@
 		};
 		656FF15220706C7000D5831D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB2732358B6805BF1FCB4306 /* Pods-Gameday-V2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -485,17 +828,14 @@
 		};
 		656FF15320706C7000D5831D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 041155903AAE88983025195D /* Pods-Gameday-V2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -506,16 +846,13 @@
 		};
 		656FF15520706C7000D5831D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD8248C263E5720D903E7795 /* Pods-Gameday-V2UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -526,16 +863,13 @@
 		};
 		656FF15620706C7000D5831D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F1D1D1E60947701FB205E1A /* Pods-Gameday-V2UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
