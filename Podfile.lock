@@ -5,6 +5,7 @@ PODS:
   - BoringSSL/Implementation (10.0):
     - BoringSSL/Interface (= 10.0)
   - BoringSSL/Interface (10.0)
+  - DateToolsSwift (4.0.0)
   - Firebase/Auth (4.11.0):
     - Firebase/Core
     - FirebaseAuth (= 4.5.0)
@@ -101,14 +102,17 @@ PODS:
   - nanopb/encode (0.3.8)
   - NSObject+Rx (4.3.0):
     - RxSwift (~> 4.0)
+  - Nuke (6.1)
   - ObjectMapper (3.1.0)
   - Protobuf (3.5.0)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - SVProgressHUD (2.2.5)
   - SwiftyPickerPopover (6.1.0)
 
 DEPENDENCIES:
+  - DateToolsSwift
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -117,13 +121,16 @@ DEPENDENCIES:
   - FirebaseUI/Google
   - GoogleSignIn
   - NSObject+Rx
+  - Nuke
   - ObjectMapper
   - RxCocoa
   - RxSwift
+  - SVProgressHUD
   - SwiftyPickerPopover
 
 SPEC CHECKSUMS:
   BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
@@ -144,12 +151,14 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NSObject+Rx: 9a5eeff5e08156f849fa973514456f28eef08742
+  Nuke: 0513c8d156bd9a2adb15db70622c3527f44542c5
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyPickerPopover: f1bb928efd60e4c754aa957c1bb67372465e9ccb
 
-PODFILE CHECKSUM: e769b26607a9c7ba4db057d86d0932ca86a38a71
+PODFILE CHECKSUM: e4071f8268f86e3d4414f34d0b54e0b7d26fd467
 
 COCOAPODS: 1.4.0

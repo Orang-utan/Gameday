@@ -9,6 +9,12 @@
 import Foundation
 import ObjectMapper
 
+enum MatchStatus {
+  case live
+  case final
+  case upcomming
+}
+
 struct GamePostModel: ImmutableMappable {
   let id: String
   let authorId: String
@@ -16,13 +22,37 @@ struct GamePostModel: ImmutableMappable {
   let updateAt: Date
   let startDate: Date
   let endDate: Date
+  let awayTeam: TeamModel
+  let homeTeam: TeamModel
+  let level: String
+  let sportType: String
+  let place: String
+
+  var author: UserModel?
 
   init(map: Map) throws {
     id = try map.value("id")
     authorId = try map.value("author_id")
     createAt = try map.value("create_at")
     updateAt = try map.value("update_at")
-    startDate = try map.value("start_date", using: DateTransform())
-    endDate = try map.value("end_date", using: DateTransform())
+    startDate = try map.value("start_date")
+    endDate = try map.value("end_date")
+    awayTeam = try map.value("away_team")
+    homeTeam = try map.value("home_team")
+    level = try map.value("level")
+    sportType = try map.value("sport_type")
+    place = try map.value("place")
+  }
+
+  var gameTitle: String {
+    return "\(self.level) \(self.sportType)"
+  }
+
+  var status: MatchStatus {
+    if endDate < Date() {
+      return .final
+    }
+
+    return startDate < Date() ? .live : .upcomming
   }
 }

@@ -29,9 +29,11 @@
 		65B178942071DD0E00B35549 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B178932071DD0E00B35549 /* DetailsViewController.swift */; };
 		65E2390E20710AB9004A5FFE /* SignInOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */; };
 		65E2391020715021004A5FFE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2390F20715021004A5FFE /* DateUtil.swift */; };
+		7130F3752074B84200921E7C /* MyDeselectableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7130F3742074B84200921E7C /* MyDeselectableSegmentedControl.swift */; };
 		714C8559207485320083FDAC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C8558207485320083FDAC /* UserModel.swift */; };
 		714C855B207485A80083FDAC /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C855A207485A80083FDAC /* FirebaseHelper.swift */; };
 		714C855D20748F7D0083FDAC /* GamePostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C855C20748F7D0083FDAC /* GamePostModel.swift */; };
+		714C855F207494690083FDAC /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714C855E207494690083FDAC /* TeamModel.swift */; };
 		71F51DF120747FEF00F35FAA /* RxFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F51DF020747FEF00F35FAA /* RxFirestore.swift */; };
 		71F51DF32074801C00F35FAA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F51DF22074801C00F35FAA /* Extensions.swift */; };
 		7EDBA956ABFFCA0374EB765F /* Pods_Gameday_V2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1BD5489890FB3EB16330B8 /* Pods_Gameday_V2Tests.framework */; };
@@ -87,9 +89,11 @@
 		65B178932071DD0E00B35549 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOptionsViewController.swift; sourceTree = "<group>"; };
 		65E2390F20715021004A5FFE /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		7130F3742074B84200921E7C /* MyDeselectableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDeselectableSegmentedControl.swift; sourceTree = "<group>"; };
 		714C8558207485320083FDAC /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		714C855A207485A80083FDAC /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		714C855C20748F7D0083FDAC /* GamePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePostModel.swift; sourceTree = "<group>"; };
+		714C855E207494690083FDAC /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 		71F51DF020747FEF00F35FAA /* RxFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxFirestore.swift; sourceTree = "<group>"; };
 		71F51DF22074801C00F35FAA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7F1D1D1E60947701FB205E1A /* Pods-Gameday-V2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2UITests/Pods-Gameday-V2UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				65A57B1C20715DD800E2F8C1 /* Checkbox.swift */,
 				65B178912071B7C400B35549 /* UserService.swift */,
 				6579EFFA20727B7900D98D85 /* ImageService.swift */,
+				7130F3742074B84200921E7C /* MyDeselectableSegmentedControl.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				65B1788F2071B77300B35549 /* UserProfile.swift */,
 				714C8558207485320083FDAC /* UserModel.swift */,
 				714C855C20748F7D0083FDAC /* GamePostModel.swift */,
+				714C855E207494690083FDAC /* TeamModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -499,14 +505,17 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Gameday-V2/Pods-Gameday-V2-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/NSObject+Rx/NSObject_Rx.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyPickerPopover/SwiftyPickerPopover.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -518,14 +527,17 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateToolsSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSObject_Rx.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPickerPopover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -609,6 +621,7 @@
 				656FF12C20706C6F00D5831D /* HomeViewController.swift in Sources */,
 				6579EFFB20727B7900D98D85 /* ImageService.swift in Sources */,
 				71F51DF120747FEF00F35FAA /* RxFirestore.swift in Sources */,
+				714C855F207494690083FDAC /* TeamModel.swift in Sources */,
 				656FF12A20706C6F00D5831D /* AppDelegate.swift in Sources */,
 				65B178902071B77300B35549 /* UserProfile.swift in Sources */,
 				654632352070897700C9C763 /* SearchTextField.swift in Sources */,
@@ -616,6 +629,7 @@
 				714C855D20748F7D0083FDAC /* GamePostModel.swift in Sources */,
 				71F51DF32074801C00F35FAA /* Extensions.swift in Sources */,
 				65E2391020715021004A5FFE /* DateUtil.swift in Sources */,
+				7130F3752074B84200921E7C /* MyDeselectableSegmentedControl.swift in Sources */,
 				714C8559207485320083FDAC /* UserModel.swift in Sources */,
 				65A57B25207187C100E2F8C1 /* AccountViewController.swift in Sources */,
 			);

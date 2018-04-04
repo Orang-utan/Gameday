@@ -18,6 +18,9 @@ target 'Gameday-V2' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'NSObject+Rx'
+  pod 'DateToolsSwift'
+  pod 'SVProgressHUD'
+  pod 'Nuke'
 
   target 'Gameday-V2Tests' do
     inherit! :search_paths

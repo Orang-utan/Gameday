@@ -7,33 +7,84 @@
 //
 
 import UIKit
+import ObjectMapper
+import SVProgressHUD
 
 class DetailsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  @IBOutlet weak var homeScoreTextField: UILabel!
+  @IBOutlet weak var awayScoreTextField: UILabel!
+  @IBOutlet weak var homeTeamNameLabel: UILabel!
+  @IBOutlet weak var awayTeamNameLabel: UILabel!
 
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func backTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+  var model: GamePostModel!
+  private var localHomeScore = 0
+  private var localAwayScore = 0
 
-    /*
-    // MARK: - Navigation
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    self.updateUI()
+
+    db.collection("game_posts").document(self.model.id)
+      .rx.listen()
+      .map { try Mapper<GamePostModel>().map(JSON: $0.data() ?? [:]) }
+      .subscribe(onNext: { [weak self] in
+        self?.model = $0
+        self?.updateUI()
+      })
+      .disposed(by: rx.disposeBag)
+  }
+
+  private func updateUI() {
+    self.homeTeamNameLabel.text = self.model.homeTeam.name
+    self.awayTeamNameLabel.text = self.model.awayTeam.name
+    self.homeScoreTextField.text = String(self.model.homeTeam.score)
+    self.awayScoreTextField.text = String(self.model.awayTeam.score)
+
+    self.localHomeScore = self.model.homeTeam.score
+    self.localAwayScore = self.model.awayTeam.score
+  }
+
+  @IBAction func plusHomeButtonPressed(_ sender: Any) {
+    self.localHomeScore += 1
+    self.homeScoreTextField.text = String(self.localHomeScore)
+  }
+
+  @IBAction func plusAwayButtonPressed(_ sender: Any) {
+    self.localAwayScore += 1
+    self.awayScoreTextField.text = String(self.localAwayScore)
+  }
+
+  @IBAction func minusHomeButtonPressed(_ sender: Any) {
+    self.localHomeScore -= 1
+    self.localHomeScore = self.localHomeScore < 0 ? 0 : self.localHomeScore
+    self.homeScoreTextField.text = String(self.localHomeScore)
+  }
+
+  @IBAction func minusAwayButtonPressed(_ sender: Any) {
+    self.localAwayScore -= 1
+    self.localAwayScore = self.localAwayScore < 0 ? 0 : self.localAwayScore
+    self.homeScoreTextField.text = String(self.localAwayScore)
+  }
+
+  @IBAction func saveScoreButtonPressed(_ sender: Any) {
+    guard self.localHomeScore != self.model.homeTeam.score || self.localAwayScore != self.model.awayTeam.score else {
+      SVProgressHUD.showError(withStatus: "You can't update same score")
+      return
     }
-    */
+
+    SVProgressHUD.show()
+    let data = ["home_team.score": self.localHomeScore, "away_team.score": self.localAwayScore]
+    db.collection("game_posts").document(self.model.id).updateData(data) { (error) in
+      SVProgressHUD.dismiss()
+      if let error = error { print(error) }
+      self.dismiss(animated: true, completion: nil)
+    }
+  }
+
+  @IBAction func backTapped(_ sender: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
+  }
 
 }

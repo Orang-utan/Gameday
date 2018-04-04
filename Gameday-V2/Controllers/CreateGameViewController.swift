@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyPickerPopover
 import Firebase
+import SVProgressHUD
+import DateToolsSwift
 
 class CreateGameViewController: UIViewController, UITextFieldDelegate {
 
@@ -36,6 +38,9 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
   var selectedDateString = ""
 
   var selectedTimeString = ""
+
+  private var startedTime: Date!
+  private var startedDate: Date!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -131,6 +136,8 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
       .setDateMode(.date)
       .setSelectedDate(Date())
       .setDoneButton(action: { popover, selectedDate in
+        self.startedDate = selectedDate
+        
         var dateArr1 = "\(selectedDate)".components(separatedBy: " ")
         self.selectedDateString = "\(dateArr1[0]) \(dateArr1[1])"
         print(self.selectedDateString)
@@ -148,6 +155,8 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
       .setDateMode(.time)
       .setMinuteInterval(1)
       .setDoneButton(action: { popover, selectedDate in
+        self.startedTime = selectedDate
+
         var dateArr1 = "\(selectedDate)".components(separatedBy: " ")
         self.selectedTimeString = "\(dateArr1[0]) \(dateArr1[1])"
         print(self.selectedTimeString)
@@ -183,47 +192,34 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         return
       }
 
-      //process data here!
-      guard let userProfile = UserService.currentUserProfile else {
-        print("failed")
-        return
-      }
+      let awayTeamModel = TeamModel(name: awayTeam.capitalized, score: 0)
+      let homeTeamModel = TeamModel(name: homeTeam.capitalized, score: 0)
 
-      let postRef = Database.database().reference().child("gamePosts").childByAutoId()
+      var startedDate = self.startedDate!
+      startedDate.hour(self.startedTime.hour)
+      startedDate.minute(self.startedTime.minute)
 
-      let postObject = [
-        "author": [
-          "uid": userProfile.uid,
-          "username": userProfile.username,
-          "photoURL": userProfile.photoURL.absoluteString
-        ],
-        "hometeam": homeTeam.capitalized,
-        "awayteam": awayTeam.capitalized,
-        "homeScore": 0,
-        "awayScore": 0,
-        "place": place,
-        "sportsType": selectedSportsString,
+      let gameRef = db.collection("game_posts").document()
+      let data: [String: Any] = [
+        "id": gameRef.documentID,
+        "author_id": CURRENT_USER_ID,
+        "create_at": FieldValue.serverTimestamp(),
+        "update_at": FieldValue.serverTimestamp(),
+        "start_date": startedDate,
+        "end_date": startedDate,
+        "away_team": awayTeamModel.toJSON(),
+        "home_team": homeTeamModel.toJSON(),
         "level": selectedLevelString,
-        "time": selectedTimeString,
-        "date": selectedDateString,
-        "like": 0,
-        "rsvp": [
-          "\(userProfile.uid)": [
-            "username": userProfile.username,
-            "uid": userProfile.uid,
-            "photoURL": userProfile.photoURL.absoluteString
-          ]
-        ],
-        "timestamp": [".sv": "timestamp"]
-        ] as [String:Any]
+        "sport_type": selectedSportsString,
+        "place": place
+      ]
 
-      postRef.setValue(postObject, withCompletionBlock: { error, ref in
-        if error == nil {
-          self.dismiss(animated: true, completion: nil)
-        } else {
-          //handle error here
-        }
-      })
+      SVProgressHUD.show()
+      gameRef.setData(data) { (error) in
+        SVProgressHUD.dismiss()
+        if let error = error { print(error) }
+        self.dismiss(animated: true, completion: nil)
+      }
     }
   }
 
