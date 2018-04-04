@@ -108,8 +108,10 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
 
   @IBAction func levelTextFieldTapped(_ sender: UITapGestureRecognizer) {
     view.endEditing(true)
+    let choices = [["Boys", "Girls"],["Varsity", "JV", "Thirds"]]
+    let fontSizes: [CGFloat] = Array.init(repeating: 18, count: choices.compactMap { $0 }.count)
     ColumnStringPickerPopover(title: "Game Level",
-                              choices: [["Boys", "Girls"],["Varsity", "JV", "Thirds"]],
+                              choices: choices,
                               selectedRows: selectedLevelRows, columnPercents: [0.5, 0.5])
       .setDoneButton(action: { popover, selectedRows, selectedStrings in
         self.selectedLevelRows = selectedRows
@@ -118,7 +120,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
 
       })
       .setCancelButton(action: {_, _, _ in print("cancel")})
-      .setFontSizes([18])
+      .setFontSizes(fontSizes)
       .appear(originView: levelTextField, baseViewController: self)
     
   }
