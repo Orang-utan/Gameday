@@ -61,23 +61,24 @@ class GameTableViewCell: UITableViewCell {
 
       self.postTime.text = model.createAt.timeAgoSinceNow
 
-      if model.status == MatchStatus.upcomming {
-        self.finalLabel.isHidden = true
-        self.homeScoreLabel.superview?.isHidden = true
-        self.bgView.backgroundColor = UIColor(hex: 0x30CB9B)
-      } else if model.status == MatchStatus.live {
-        self.finalLabel.isHidden = true
-        self.homeScoreLabel.superview?.isHidden = false
-        self.bgView.backgroundColor = UIColor.orange
-      } else {
-        self.finalLabel.isHidden = false
-        self.homeScoreLabel.superview?.isHidden = false
-        self.bgView.backgroundColor = UIColor.red
-      }
+      let isUpcomingStatus = model.status == MatchStatus.upcomming
+      self.dateAndLocationLabel.isHidden = !isUpcomingStatus
+      self.homeScoreLabel.superview?.isHidden = isUpcomingStatus
+      self.finalLabel.isHidden = !(model.status == MatchStatus.final)
 
       self.homeScoreLabel.text = String(model.homeTeam.score)
       self.awayScoreLabel.text = String(model.awayTeam.score)
+
+      if model.status == MatchStatus.upcomming {
+        self.bgView.backgroundColor = UIColor(hex: 0x30CB9B)
+      } else if model.status == MatchStatus.live {
+        self.bgView.backgroundColor = UIColor.orange
+      } else {
+        self.bgView.backgroundColor = UIColor.red
+      }
+
       self.homeScoreLabel.superview?.backgroundColor = self.bgView.backgroundColor
+
 
 //      let likeNumber = NSMutableAttributedString(string: "\(game.like)", attributes:attrs_black)
 //      let like = (NSMutableAttributedString(string:" Likes", attributes:attrs_gray))
