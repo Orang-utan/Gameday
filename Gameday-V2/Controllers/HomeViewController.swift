@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
     } else if timeSegmentControl.selectedSegmentIndex == 0 {
       self.filteredGames = self.games.filter { $0.status == MatchStatus.upcomming }
     } else if timeSegmentControl.selectedSegmentIndex == 1 {
-      self.filteredGames = self.games.filter { $0.status == MatchStatus.live }
+      self.filteredGames = self.games.filter { $0.startDate.isToday }
     } else {
       self.filteredGames = self.games.filter { $0.status == MatchStatus.final }
     }

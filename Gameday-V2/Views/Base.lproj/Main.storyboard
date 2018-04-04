@@ -843,7 +843,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="264" id="ICt-tB-Hxk" customClass="GameTableViewCell" customModule="Gameday_V2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="264" id="ICt-tB-Hxk">
                                         <rect key="frame" x="0.0" y="116" width="375" height="264"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ICt-tB-Hxk" id="THf-y5-wgg">
@@ -936,9 +936,6 @@
                                                     <rect key="frame" x="15" y="213" width="35" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="RSVP"/>
-                                                    <connections>
-                                                        <action selector="rsvpTapped:" destination="ICt-tB-Hxk" eventType="touchUpInside" id="SLf-Dn-jSj"/>
-                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="YnP-5r-BQ4">
                                                     <rect key="frame" x="0.0" y="254" width="375" height="10"/>
@@ -957,9 +954,6 @@
                                                     <rect key="frame" x="325" y="213" width="35" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="Clap"/>
-                                                    <connections>
-                                                        <action selector="likeTapped:" destination="ICt-tB-Hxk" eventType="touchUpInside" id="8uO-Q8-blS"/>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999 Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWr-0Y-UZl">
                                                     <rect key="frame" x="244" y="220" width="73" height="21"/>
@@ -982,21 +976,6 @@
                                                 <constraint firstItem="YnP-5r-BQ4" firstAttribute="leading" secondItem="THf-y5-wgg" secondAttribute="leading" id="vJn-Ts-lKu"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="awayTeamLabel" destination="9Zo-o9-wVd" id="Qe6-F3-lmf"/>
-                                            <outlet property="awayTeamPicture" destination="xg7-uD-JUX" id="rsK-1K-JUC"/>
-                                            <outlet property="bgView" destination="S9I-AN-uJD" id="2hY-OH-nsc"/>
-                                            <outlet property="dateAndLocationLabel" destination="GyU-F1-hg3" id="3Gf-xZ-peG"/>
-                                            <outlet property="gameTimeLabel" destination="uIK-3X-HG1" id="TsR-ua-pH7"/>
-                                            <outlet property="gameTitleLabel" destination="BXr-qt-EXS" id="5xK-HN-gPx"/>
-                                            <outlet property="homeTeamLabel" destination="6d5-lf-BKu" id="gbK-0S-2dg"/>
-                                            <outlet property="homeTeamPicture" destination="Xdq-dI-5vN" id="UYQ-tV-gzd"/>
-                                            <outlet property="likeLabel" destination="UWr-0Y-UZl" id="n8n-zz-t1C"/>
-                                            <outlet property="postTime" destination="jE7-xI-cgM" id="aCj-P9-Xgy"/>
-                                            <outlet property="rsvpLabel" destination="HcY-WB-npO" id="nbD-cC-p3a"/>
-                                            <outlet property="userName" destination="mC6-Y2-GaD" id="Qjy-vO-Myz"/>
-                                            <outlet property="userProfile" destination="udI-AB-qLp" id="qBZ-7V-YTH"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1027,7 +1006,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Zs-Rx-Xx7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.8" y="849.62518740629696"/>
+            <point key="canvasLocation" x="1729" y="851"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3gl-q4-FkN">

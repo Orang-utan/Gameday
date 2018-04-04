@@ -206,7 +206,6 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         "create_at": FieldValue.serverTimestamp(),
         "update_at": FieldValue.serverTimestamp(),
         "start_date": startedDate,
-        "end_date": startedDate,
         "away_team": awayTeamModel.toJSON(),
         "home_team": homeTeamModel.toJSON(),
         "level": selectedLevelString,

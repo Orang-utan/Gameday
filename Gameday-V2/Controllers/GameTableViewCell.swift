@@ -67,15 +67,17 @@ class GameTableViewCell: UITableViewCell {
         self.bgView.backgroundColor = UIColor(hex: 0x30CB9B)
       } else if model.status == MatchStatus.live {
         self.finalLabel.isHidden = true
-        self.homeScoreLabel.text = String(model.homeTeam.score)
-        self.awayScoreLabel.text = String(model.awayTeam.score)
         self.homeScoreLabel.superview?.isHidden = false
         self.bgView.backgroundColor = UIColor.orange
       } else {
         self.finalLabel.isHidden = false
-        self.homeScoreLabel.superview?.isHidden = true
+        self.homeScoreLabel.superview?.isHidden = false
         self.bgView.backgroundColor = UIColor.red
       }
+
+      self.homeScoreLabel.text = String(model.homeTeam.score)
+      self.awayScoreLabel.text = String(model.awayTeam.score)
+      self.homeScoreLabel.superview?.backgroundColor = self.bgView.backgroundColor
 
 //      let likeNumber = NSMutableAttributedString(string: "\(game.like)", attributes:attrs_black)
 //      let like = (NSMutableAttributedString(string:" Likes", attributes:attrs_gray))
@@ -94,7 +96,6 @@ class GameTableViewCell: UITableViewCell {
 
     userProfile.layer.cornerRadius = userProfile.bounds.height / 2
     userProfile.clipsToBounds = true
-    self.homeScoreLabel.superview?.backgroundColor = UIColor.orange
   }
 
   override func prepareForReuse() {
