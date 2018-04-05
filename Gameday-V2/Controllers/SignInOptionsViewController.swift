@@ -9,8 +9,6 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-import FirebaseAuthUI
-import FirebaseGoogleAuthUI
 
 class SignInOptionsViewController: UIViewController {
 
@@ -18,8 +16,6 @@ class SignInOptionsViewController: UIViewController {
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var googleSigninButton: GIDSignInButton!
-
-  private var authUI: FUIAuth?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,14 +28,12 @@ class SignInOptionsViewController: UIViewController {
     googleSigninButton.layer.masksToBounds = true
     googleSigninButton.layer.cornerRadius = 5
 
-    authUI = FUIAuth.defaultAuthUI()
-    authUI?.delegate = self
-    authUI?.isSignInWithEmailHidden = true
-    authUI?.providers = [FUIGoogleAuth()]
-
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(googleButtonPressed(_:)))
     googleSigninButton.addGestureRecognizer(tapGesture)
     googleSigninButton.isUserInteractionEnabled = true
+
+    GIDSignIn.sharedInstance().delegate = self
+    GIDSignIn.sharedInstance().uiDelegate = self
   }
 
   private func pushToHomeControllerIfNeeded() {
@@ -87,8 +81,7 @@ class SignInOptionsViewController: UIViewController {
   }
 
   @objc func googleButtonPressed(_ sender: Any) {
-    guard let authController = self.authUI?.authViewController() else { return }
-    self.present(authController, animated: true, completion: nil)
+    GIDSignIn.sharedInstance().signIn()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -97,9 +90,26 @@ class SignInOptionsViewController: UIViewController {
   }
 }
 
-extension SignInOptionsViewController: FUIAuthDelegate {
-  func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-    if let error = error { print(error) }
-    self.updateUserInfoToFirestore()
+extension SignInOptionsViewController: GIDSignInDelegate {
+  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    if let error = error {
+      print(error)
+      return
+    }
+
+    guard let authentication = user.authentication else { return }
+    let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                   accessToken: authentication.accessToken)
+    Auth.auth().signIn(with: credential) { (user, error) in
+      if user != nil, error == nil {
+        self.updateUserInfoToFirestore()
+        print("logged in")
+      } else {
+        print("error logging in: \(error!.localizedDescription)")
+      }
+    }
   }
+}
+
+extension SignInOptionsViewController: GIDSignInUIDelegate {
 }

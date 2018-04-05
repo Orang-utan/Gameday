@@ -70,11 +70,14 @@ class GameTableViewCell: UITableViewCell {
       self.awayScoreLabel.text = String(model.awayTeam.score)
 
       if model.status == MatchStatus.upcomming {
-        self.bgView.backgroundColor = UIColor(hex: 0x30CB9B)
+        //upcoming
+        self.bgView.backgroundColor = UIColor(hex: 0xfd9326)
       } else if model.status == MatchStatus.live {
-        self.bgView.backgroundColor = UIColor.orange
+        //live
+        self.bgView.backgroundColor = UIColor(hex: 0x3bca9c)
       } else {
-        self.bgView.backgroundColor = UIColor.red
+        // final
+        self.bgView.backgroundColor = UIColor(hex: 0xf56072)
       }
 
       self.homeScoreLabel.superview?.backgroundColor = self.bgView.backgroundColor

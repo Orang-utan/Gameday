@@ -74,7 +74,7 @@ class HomeViewController: UIViewController {
 
   @objc func segmentControlDidPressed() {
     if timeSegmentControl.selectedSegmentIndex == UISegmentedControlNoSegment {
-      self.filteredGames = self.games
+      self.filteredGames = self.games.sorted(by: { $0.createAt > $1.createAt })
     } else if timeSegmentControl.selectedSegmentIndex == 0 {
       self.filteredGames = self.games.filter { $0.status == MatchStatus.upcomming }
     } else if timeSegmentControl.selectedSegmentIndex == 1 {

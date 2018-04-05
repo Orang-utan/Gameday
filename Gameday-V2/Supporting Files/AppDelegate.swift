@@ -8,8 +8,8 @@
 
 import UIKit
 import Firebase
-import FirebaseAuthUI
 import NSObject_Rx
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,18 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Use Firebase library to configure APIs
     FirebaseApp.configure()
-    self.window?.makeKeyAndVisible()
+    GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+
     return true
   }
 
   func application(_ app: UIApplication, open url: URL,
                    options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-    let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String?
-    if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
-      return true
-    }
-    // other URL handling goes here.
-    return false
+    return GIDSignIn.sharedInstance().handle(url,
+                                             sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                             annotation: [:])
   }
 
   
@@ -57,7 +55,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
-
-
 }
-

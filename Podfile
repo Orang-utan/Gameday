@@ -11,7 +11,7 @@ target 'Gameday-V2' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
-  pod 'FirebaseUI/Google'
+  pod 'Firebase/Messaging'
   pod 'GoogleSignIn'
   pod 'SwiftyPickerPopover'
   pod 'ObjectMapper'
