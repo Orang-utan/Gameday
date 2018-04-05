@@ -15,22 +15,25 @@ class HomeViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var timeSegmentControl: UISegmentedControl!
+  @IBOutlet weak var searchTopConstraint: NSLayoutConstraint!
+  @IBOutlet weak var searchBar: UISearchBar!
 
   var data: [SportsGame] = []
   private var games: [GamePostModel] = []
   private var filteredGames: [GamePostModel] = []
 
-  let attrs_black = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16), NSAttributedStringKey.foregroundColor : UIColor.black]
-  let attrs_gray = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16), NSAttributedStringKey.foregroundColor : UIColor.gray]
-
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.estimatedRowHeight = 0
 
     timeSegmentControl.selectedSegmentIndex = UISegmentedControlNoSegment
     timeSegmentControl.layer.cornerRadius = 0
     timeSegmentControl.addTarget(self, action: #selector(segmentControlDidPressed), for: UIControlEvents.valueChanged)
+
+    UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white], for: .normal)
+    self.searchBar.delegate = self
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -63,8 +66,12 @@ class HomeViewController: UIViewController {
       })
       .subscribe(onSuccess: { [weak self] (games) in
         SVProgressHUD.dismiss()
-        self?.games = games
-        self?.filteredGames = games
+        let sortedLiveGames = games.filter { $0.status == MatchStatus.live }.sorted(by: { $0.createAt > $1.createAt })
+        let sortedUpcomingGames = games.filter { $0.status == MatchStatus.upcomming }.sorted(by: { $0.createAt > $1.createAt })
+        let sortedFinalGames = games.filter { $0.status == MatchStatus.final }.sorted(by: { $0.createAt > $1.createAt })
+        let sortedGames = sortedLiveGames + sortedUpcomingGames + sortedFinalGames
+        self?.games = sortedGames
+        self?.filteredGames = sortedGames
         self?.tableView.reloadData()
         }, onError: { (error) in
           print(error)
@@ -74,7 +81,7 @@ class HomeViewController: UIViewController {
 
   @objc func segmentControlDidPressed() {
     if timeSegmentControl.selectedSegmentIndex == UISegmentedControlNoSegment {
-      self.filteredGames = self.games.sorted(by: { $0.createAt > $1.createAt })
+      self.filteredGames = self.games
     } else if timeSegmentControl.selectedSegmentIndex == 0 {
       self.filteredGames = self.games.filter { $0.status == MatchStatus.upcomming }
     } else if timeSegmentControl.selectedSegmentIndex == 1 {
@@ -89,12 +96,36 @@ class HomeViewController: UIViewController {
   @IBAction func createGameTapped(_ sender: UITapGestureRecognizer) {
     performSegue(withIdentifier: "HomeToCreateSegue", sender: self)
   }
+
+  @IBAction func searchButtonPressed(_ sender: Any) {
+    let isOpenned = self.searchTopConstraint.constant == 0
+    self.searchTopConstraint.constant = isOpenned ? -40 : 0
+    if isOpenned {
+      self.view.endEditing(true)
+    } else {
+      self.searchBar.isHidden = isOpenned
+    }
+    UIView.animate(withDuration: 0.25, animations: {
+      self.view.layoutIfNeeded()
+    }, completion: { _ in
+      if isOpenned {
+        self.searchBar.isHidden = isOpenned
+      } else {
+        self.searchBar.becomeFirstResponder()
+      }
+    })
+  }
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.filteredGames.count
+  }
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameTableViewCell
     cell.model = self.filteredGames[indexPath.row]
+    cell.delegate = self
     return cell
   }
 
@@ -111,10 +142,43 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 265
   }
+}
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.filteredGames.count
+extension HomeViewController: GameTableViewCellDelegate {
+  func didPressedLikeButton(cell: UITableViewCell) {
+    guard let index = self.tableView.indexPath(for: cell)?.row else { return }
+    let game = self.filteredGames[index]
+    db.collection("game_posts").document(game.id)
+      .rx.getDocument()
+      .map(type: GamePostModel.self)
+      .flatMap { (game) -> Single<Void> in
+        var likesCount = game?.isLiked ?
+        return Single.just(())
+    }
   }
 
+  func didPressedRSVPButton(cell: UITableViewCell) {
+    guard let index = self.tableView.indexPath(for: cell)?.row else { return }
+
+  }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    let searchText = searchText.lowercased()
+    self.filteredGames = self.games.filter {
+      $0.gameTitle.lowercased().contains(searchText)
+        || $0.homeTeam.name.lowercased().contains(searchText)
+        || $0.awayTeam.name.lowercased().contains(searchText)
+    }
+    self.tableView.reloadData()
+  }
+
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = ""
+    self.view.endEditing(true)
+    self.searchButtonPressed(self)
+    self.segmentControlDidPressed()
+  }
 }
 

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol GameTableViewCellDelegate: class {
+  func didPressedLikeButton(cell: UITableViewCell)
+  func didPressedRSVPButton(cell: UITableViewCell)
+}
+
 class GameTableViewCell: UITableViewCell {
 
   @IBOutlet weak var userProfile: UIImageView!
@@ -35,6 +40,8 @@ class GameTableViewCell: UITableViewCell {
   @IBOutlet weak var awayScoreLabel: UILabel!
   @IBOutlet weak var finalLabel: UILabel!
 
+  let attrs_black = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16), NSAttributedStringKey.foregroundColor : UIColor.black]
+  let attrs_gray = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16), NSAttributedStringKey.foregroundColor : UIColor.gray]
   private let formatter = DateFormatter()
 
   var model: GamePostModel! {
@@ -70,30 +77,28 @@ class GameTableViewCell: UITableViewCell {
       self.awayScoreLabel.text = String(model.awayTeam.score)
 
       if model.status == MatchStatus.upcomming {
-        //upcoming
-        self.bgView.backgroundColor = UIColor(hex: 0xfd9326)
+        self.bgView.backgroundColor = UIColor(hex: 0x30CB9B)
       } else if model.status == MatchStatus.live {
-        //live
-        self.bgView.backgroundColor = UIColor(hex: 0x3bca9c)
+        self.bgView.backgroundColor = UIColor.orange
       } else {
-        // final
-        self.bgView.backgroundColor = UIColor(hex: 0xf56072)
+        self.bgView.backgroundColor = UIColor.red
       }
 
       self.homeScoreLabel.superview?.backgroundColor = self.bgView.backgroundColor
 
 
-//      let likeNumber = NSMutableAttributedString(string: "\(game.like)", attributes:attrs_black)
-//      let like = (NSMutableAttributedString(string:" Likes", attributes:attrs_gray))
-//      likeNumber.append(like)
-//      cell.likeLabel.attributedText = likeNumber
-//
-//      let fansNumber = NSMutableAttributedString(string: "\(game.rsvp.count)", attributes:attrs_black)
-//      let fans = (NSMutableAttributedString(string:" Fans", attributes:attrs_gray))
-//      fansNumber.append(fans)
-//      cell.rsvpLabel.attributedText = fansNumber
+      let likeNumber = NSMutableAttributedString(string: "\(model.likesCount)", attributes: attrs_black)
+      let like = NSMutableAttributedString(string:" Likes", attributes: attrs_gray)
+      likeNumber.append(like)
+      self.likeLabel.attributedText = likeNumber
+
+      let fansNumber = NSMutableAttributedString(string: "\(model.fansCount)", attributes:attrs_black)
+      let fans = NSMutableAttributedString(string:" Fans", attributes:attrs_gray)
+      fansNumber.append(fans)
+      self.rsvpLabel.attributedText = fansNumber
     }
   }
+  weak var delegate: GameTableViewCellDelegate?
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -110,17 +115,11 @@ class GameTableViewCell: UITableViewCell {
   }
 
   @IBAction func rsvpTapped(_ sender: UIButton) {
-    print("RSVPed")
+    self.delegate?.didPressedRSVPButton(cell: self)
   }
 
   @IBAction func likeTapped(_ sender: UIButton) {
-    print("Liked")
-  }
-
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-
-    // Configure the view for the selected state
+    self.delegate?.didPressedLikeButton(cell: self)
   }
 
 }

@@ -27,6 +27,10 @@ struct GamePostModel: ImmutableMappable {
   let level: String
   let sportType: String
   let place: String
+  let likesCount: Int
+  let fansCount: Int
+  let likeUsersId: [String: Bool]
+  let fanUsersId: [String: Bool]
 
   var author: UserModel?
 
@@ -41,6 +45,10 @@ struct GamePostModel: ImmutableMappable {
     level = try map.value("level")
     sportType = try map.value("sport_type")
     place = try map.value("place")
+    likesCount = (try? map.value("likes_count")) ?? 0
+    fansCount = (try? map.value("fans_count")) ?? 0
+    likeUsersId = (try? map.value("like_users_id")) ?? [:]
+    fanUsersId = (try? map.value("fan_users_id")) ?? [:]
 
     var temp = startDate.add(4.hours)
     if temp.isTomorrow {
@@ -60,5 +68,17 @@ struct GamePostModel: ImmutableMappable {
     }
 
     return startDate < Date() ? .live : .upcomming
+  }
+
+  var isLiked: Bool {
+    return likeUsersId.contains(where: { (key, _) -> Bool in
+      return key == CURRENT_USER_ID
+    })
+  }
+
+  var isFan: Bool {
+    return fanUsersId.contains(where: { (key, _) -> Bool in
+      return key == CURRENT_USER_ID
+    })
   }
 }
