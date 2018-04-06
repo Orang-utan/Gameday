@@ -40,6 +40,9 @@ class GameTableViewCell: UITableViewCell {
   @IBOutlet weak var awayScoreLabel: UILabel!
   @IBOutlet weak var finalLabel: UILabel!
 
+  @IBOutlet weak var likeButton: UIButton!
+  @IBOutlet weak var rsvpButton: UIButton!
+
   let attrs_black = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16), NSAttributedStringKey.foregroundColor : UIColor.black]
   let attrs_gray = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16), NSAttributedStringKey.foregroundColor : UIColor.gray]
   private let formatter = DateFormatter()
@@ -86,6 +89,8 @@ class GameTableViewCell: UITableViewCell {
 
       self.homeScoreLabel.superview?.backgroundColor = self.bgView.backgroundColor
 
+      self.likeButton.isSelected = model.isLiked
+      self.rsvpButton.isSelected = model.isFan
 
       let likeNumber = NSMutableAttributedString(string: "\(model.likesCount)", attributes: attrs_black)
       let like = NSMutableAttributedString(string:" Likes", attributes: attrs_gray)
@@ -115,11 +120,37 @@ class GameTableViewCell: UITableViewCell {
   }
 
   @IBAction func rsvpTapped(_ sender: UIButton) {
-    self.delegate?.didPressedRSVPButton(cell: self)
+    if self.rsvpButton.isSelected {
+      let alert = UIAlertController(title: "Gameday", message: "Do you want to un-RSVP?", preferredStyle: UIAlertControllerStyle.alert)
+      alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+      let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (_) in
+        self.delegate?.didPressedRSVPButton(cell: self)
+        let fansNumber = NSMutableAttributedString(string: "\(self.model.fansCount - 1)", attributes: self.attrs_black)
+        let fans = NSMutableAttributedString(string:" Fans", attributes: self.attrs_gray)
+        fansNumber.append(fans)
+        self.rsvpLabel.attributedText = fansNumber
+      }
+      alert.addAction(yesAction)
+      UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+    } else {
+      self.delegate?.didPressedRSVPButton(cell: self)
+      let fansNumber = NSMutableAttributedString(string: "\(model.fansCount + 1)", attributes:attrs_black)
+      let fans = NSMutableAttributedString(string:" Fans", attributes:attrs_gray)
+      fansNumber.append(fans)
+      self.rsvpLabel.attributedText = fansNumber
+    }
+
+    self.rsvpButton.isSelected = !self.rsvpButton.isSelected
   }
 
   @IBAction func likeTapped(_ sender: UIButton) {
+    guard self.likeButton.isSelected == false else { return }
     self.delegate?.didPressedLikeButton(cell: self)
+    let likeNumber = NSMutableAttributedString(string: "\(model.likesCount + 1)", attributes: attrs_black)
+    let like = NSMutableAttributedString(string:" Likes", attributes: attrs_gray)
+    likeNumber.append(like)
+    self.likeButton.isSelected = true
+    self.likeLabel.attributedText = likeNumber
   }
 
 }

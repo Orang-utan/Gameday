@@ -271,6 +271,7 @@
                                                         <constraint firstAttribute="height" constant="35" id="MOL-2X-WIU"/>
                                                     </constraints>
                                                     <state key="normal" image="Clap"/>
+                                                    <state key="selected" image="liked_icon"/>
                                                     <connections>
                                                         <action selector="likeTapped:" destination="CND-UJ-3p9" eventType="touchUpInside" id="IeM-KA-mg2"/>
                                                     </connections>
@@ -335,8 +336,10 @@
                                             <outlet property="homeScoreLabel" destination="wro-g0-Htl" id="sgU-ey-CNB"/>
                                             <outlet property="homeTeamLabel" destination="sUh-AA-dTh" id="ff7-MM-Pxj"/>
                                             <outlet property="homeTeamPicture" destination="02Q-7J-tb7" id="mln-Cs-aQ6"/>
+                                            <outlet property="likeButton" destination="xxA-yB-ouR" id="fm6-Yp-260"/>
                                             <outlet property="likeLabel" destination="thE-XQ-LqS" id="hWZ-x9-LKw"/>
                                             <outlet property="postTime" destination="7Hm-ng-o4X" id="CBb-PD-pJj"/>
+                                            <outlet property="rsvpButton" destination="vf9-N7-ajL" id="cLe-ht-yL4"/>
                                             <outlet property="rsvpLabel" destination="b8r-JX-6zT" id="62g-1J-0iJ"/>
                                             <outlet property="userName" destination="uQz-0Q-JY6" id="68h-TE-QFo"/>
                                             <outlet property="userProfile" destination="VCv-no-6zW" id="xtg-ge-tMd"/>
@@ -1309,5 +1312,6 @@
         <image name="Search" width="25" height="25"/>
         <image name="Trash" width="25" height="25"/>
         <image name="User" width="25" height="25"/>
+        <image name="liked_icon" width="33" height="33"/>
     </resources>
 </document>
