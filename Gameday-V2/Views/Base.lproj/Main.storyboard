@@ -1233,9 +1233,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="awayAddButton" destination="FNI-Ix-ffR" id="D5r-cq-ntI"/>
                         <outlet property="awayScoreTextField" destination="Uzj-jV-dAs" id="xOZ-ax-DuE"/>
+                        <outlet property="awaySubtractButton" destination="pof-sh-cnP" id="eUC-8r-hpL"/>
                         <outlet property="awayTeamNameLabel" destination="IPz-uA-M9u" id="z6q-of-VBw"/>
+                        <outlet property="homeAddButton" destination="9iB-P3-5aU" id="3vY-Vo-B3G"/>
                         <outlet property="homeScoreTextField" destination="QQN-U8-UrO" id="b6O-5g-leC"/>
+                        <outlet property="homeSubtractButton" destination="nmz-ha-8jH" id="Sf1-Or-geB"/>
                         <outlet property="homeTeamNameLabel" destination="UYr-WV-UFV" id="uod-cu-iHe"/>
                     </connections>
                 </viewController>
@@ -1360,7 +1364,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znv-sX-zKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1729" y="-559"/>
+            <point key="canvasLocation" x="1728.8" y="-559.07046476761627"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Faf-5l-Dn1">
