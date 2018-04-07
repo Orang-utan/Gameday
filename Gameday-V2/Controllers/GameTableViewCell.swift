@@ -74,18 +74,23 @@ class GameTableViewCell: UITableViewCell {
       let isUpcomingStatus = model.status == MatchStatus.upcomming
       self.dateAndLocationLabel.isHidden = !isUpcomingStatus
       self.homeScoreLabel.superview?.isHidden = isUpcomingStatus
-      self.finalLabel.isHidden = !(model.status == MatchStatus.final)
+      self.finalLabel.isHidden = !(model.status == MatchStatus.final || model.status == MatchStatus.live)
 
       self.homeScoreLabel.text = String(model.homeTeam.score)
       self.awayScoreLabel.text = String(model.awayTeam.score)
 
-      if model.status == MatchStatus.upcomming {
-        self.bgView.backgroundColor = UIColor(hex: 0x30CB9B)
-      } else if model.status == MatchStatus.live {
-        self.bgView.backgroundColor = UIColor.orange
-      } else {
-        self.bgView.backgroundColor = UIColor.red
-      }
+    if model.status == MatchStatus.upcomming {
+        //upcoming
+        self.bgView.backgroundColor = UIColor(hex: 0xfd9326)
+    } else if model.status == MatchStatus.live {
+        //live
+        self.bgView.backgroundColor = UIColor(hex: 0x3bca9c)
+        self.finalLabel.text = "LIVE NOW"
+    } else {
+        // final
+        self.bgView.backgroundColor = UIColor(hex: 0xf56072)
+        self.finalLabel.text = "FINAL"
+    }
 
       self.homeScoreLabel.superview?.backgroundColor = self.bgView.backgroundColor
 

@@ -16,6 +16,12 @@ class DetailsViewController: UIViewController {
   @IBOutlet weak var awayScoreTextField: UILabel!
   @IBOutlet weak var homeTeamNameLabel: UILabel!
   @IBOutlet weak var awayTeamNameLabel: UILabel!
+    
+  @IBOutlet weak var homeAddButton: UIButton!
+  @IBOutlet weak var homeSubtractButton: UIButton!
+    
+  @IBOutlet weak var awayAddButton: UIButton!
+  @IBOutlet weak var awaySubtractButton: UIButton!
 
   var model: GamePostModel!
   private var localHomeScore = 0
@@ -23,6 +29,24 @@ class DetailsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    homeScoreTextField.layer.cornerRadius = 7
+    homeScoreTextField.clipsToBounds = true
+    
+    awayScoreTextField.layer.cornerRadius = 7
+    awayScoreTextField.clipsToBounds = true
+    
+    homeAddButton.layer.cornerRadius = 7
+    homeAddButton.clipsToBounds = true
+    
+    homeSubtractButton.layer.cornerRadius = 7
+    homeSubtractButton.clipsToBounds = true
+    
+    awayAddButton.layer.cornerRadius = 7
+    awayAddButton.clipsToBounds = true
+    
+    awaySubtractButton.layer.cornerRadius = 7
+    awaySubtractButton.clipsToBounds = true
 
     self.updateUI()
 

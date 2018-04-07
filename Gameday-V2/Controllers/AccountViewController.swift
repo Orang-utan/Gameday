@@ -34,16 +34,15 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     userProfileImage.layer.cornerRadius = userProfileImage.bounds.height / 2
     userProfileImage.clipsToBounds = true
 
-    guard let userProfile = UserService.currentUserProfile else {
-      return
+    if let username = Auth.auth().currentUser?.displayName,
+        let photoURL = Auth.auth().currentUser?.photoURL {
+        usernameLabel.text = username
+        ImageService.getImage(withURL: photoURL) {
+            image in
+            self.userProfileImage.image = image
+        }
     }
-
-    ImageService.getImage(withURL: userProfile.photoURL) {
-      image in
-      self.userProfileImage.image = image
-    }
-
-    usernameLabel.text = userProfile.username
+    
   }
 
   func updateHeaderView() {
@@ -75,9 +74,17 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
 
   @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
-    try! Auth.auth().signOut()
-    let loginVC = self.storyboard?.instantiateInitialViewController()
-    UIApplication.shared.keyWindow?.rootViewController = loginVC
+    
+    let alert = UIAlertController(title: "Logout?", message: "Are you sure you want to logout of Gameday?", preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+        try! Auth.auth().signOut()
+        let loginVC = self.storyboard?.instantiateInitialViewController()
+        UIApplication.shared.keyWindow?.rootViewController = loginVC
+    }))
+    alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+        return
+    }))
+    self.present(alert, animated: true, completion: nil)
   }
 
   override func didReceiveMemoryWarning() {

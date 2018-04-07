@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -850,13 +851,19 @@
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FootballBackground" translatesAutoresizingMaskIntoConstraints="NO" id="tBt-Pr-95r">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Neutral User Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="gka-WG-Iyv">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Neutral User Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="gka-WG-Iyv">
                                             <rect key="frame" x="8" y="8" width="60" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="9Nx-nC-Egy"/>
+                                                <constraint firstAttribute="width" secondItem="gka-WG-Iyv" secondAttribute="height" multiplier="1:1" id="EAG-yQ-fR4"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Victor Hernandaz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMn-4D-ohC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Victor Hernandaz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMn-4D-ohC">
                                             <rect key="frame" x="76" y="24" width="191" height="28"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="KMn-4D-ohC" secondAttribute="height" multiplier="191:28" id="jJQ-g7-5Is"/>
+                                                <constraint firstAttribute="height" constant="28" id="oOW-nE-01P"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -866,8 +873,12 @@
                                     <constraints>
                                         <constraint firstItem="tBt-Pr-95r" firstAttribute="top" secondItem="o1j-75-g8s" secondAttribute="top" id="1jF-MY-fA2"/>
                                         <constraint firstItem="tBt-Pr-95r" firstAttribute="leading" secondItem="o1j-75-g8s" secondAttribute="leading" id="5Gf-9m-Aa0"/>
+                                        <constraint firstItem="KMn-4D-ohC" firstAttribute="leading" secondItem="gka-WG-Iyv" secondAttribute="trailing" constant="8" id="9N3-KV-P44"/>
+                                        <constraint firstItem="gka-WG-Iyv" firstAttribute="leading" secondItem="o1j-75-g8s" secondAttribute="leading" constant="8" id="DhE-kO-043"/>
                                         <constraint firstAttribute="trailing" secondItem="tBt-Pr-95r" secondAttribute="trailing" id="Eum-Mf-zKJ"/>
                                         <constraint firstAttribute="bottom" secondItem="tBt-Pr-95r" secondAttribute="bottom" id="YCl-DG-DAy"/>
+                                        <constraint firstAttribute="bottom" secondItem="KMn-4D-ohC" secondAttribute="bottom" constant="36" id="azd-gW-nwL"/>
+                                        <constraint firstAttribute="bottom" secondItem="gka-WG-Iyv" secondAttribute="bottom" constant="20" id="ct2-aF-eWe"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
