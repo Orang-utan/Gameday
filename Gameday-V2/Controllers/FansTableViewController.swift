@@ -43,6 +43,10 @@ class FansTableViewController: UITableViewController {
   @IBAction func backButtonPressed(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
+    }
 
   // MARK: - Table view data source
 

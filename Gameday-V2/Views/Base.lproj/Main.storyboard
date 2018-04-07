@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Gameday-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Gameday_V2" customModuleProvider="target" sceneMemberID="viewController">
@@ -357,8 +357,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Gameday" id="Me8-8a-3KN">
-                        <barButtonItem key="rightBarButtonItem" image="Search" id="6AW-sg-lAz">
+                    <navigationItem key="navigationItem" id="Me8-8a-3KN">
+                        <barButtonItem key="leftBarButtonItem" image="Search" id="6AW-sg-lAz">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="searchButtonPressed:" destination="BYZ-38-t0r" id="V3J-xf-jYk"/>
@@ -789,11 +789,11 @@
             </objects>
             <point key="canvasLocation" x="-86" y="1342"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="iVb-Li-L8O">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" id="rqp-3L-45C" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="VRz-HP-g8q">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="rqp-3L-45C" customClass="MainTabBarViewController" customModule="Gameday_V2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="VRz-HP-g8q" customClass="MainTabBar" customModule="Gameday_V2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -802,7 +802,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="sUY-YA-ziZ" kind="relationship" relationship="viewControllers" id="jy7-02-vbB"/>
-                        <segue destination="Rjr-FF-att" kind="relationship" relationship="viewControllers" id="K1K-kr-kac"/>
+                        <segue destination="Rjr-FF-att" kind="relationship" relationship="viewControllers" id="eyk-4n-ck4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzm-2e-SIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1317,15 +1317,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="DCo-OE-Eh0" customClass="FanTableViewCell" customModule="Gameday_V2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="55" id="DCo-OE-Eh0" customClass="FanTableViewCell" customModule="Gameday_V2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DCo-OE-Eh0" id="th5-Qk-F2E">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="eHm-9R-tOa">
-                                            <rect key="frame" x="16" y="4" width="35" height="35"/>
+                                            <rect key="frame" x="16" y="10" width="35" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1334,7 +1334,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Victor Hernandaz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8f-wj-vy7">
-                                            <rect key="frame" x="59" y="12" width="228" height="21"/>
+                                            <rect key="frame" x="59" y="18" width="228" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>

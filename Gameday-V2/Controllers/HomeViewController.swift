@@ -13,6 +13,7 @@ import SVProgressHUD
 import ObjectMapper
 import NotificationBannerSwift
 
+
 class HomeViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
@@ -20,9 +21,9 @@ class HomeViewController: UIViewController {
   @IBOutlet weak var searchTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var searchBar: UISearchBar!
 
-  var data: [SportsGame] = []
-  private var games: [GamePostModel] = []
-  private var filteredGames: [GamePostModel] = []
+    var data: [SportsGame] = []
+    private var games: [GamePostModel] = []
+    private var filteredGames: [GamePostModel] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,13 +37,23 @@ class HomeViewController: UIViewController {
 
     UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white], for: .normal)
     self.searchBar.delegate = self
+    
+    let logo = #imageLiteral(resourceName: "Gameday Logo")
+    let imageView = UIImageView(image:logo)
+    imageView.contentMode = .scaleAspectFit
+    self.navigationItem.titleView = imageView
+    
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-    self.getDatas()
-  }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCreateGame), name: Notification.Name(rawValue: "addGameTabBarTapped"), object: nil)
+        self.getDatas()
+    }
+    
+    @objc func showCreateGame(notification: Notification){
+        performSegue(withIdentifier: "HomeToCreateSegue", sender: self)
+    }
 
   private func getDatas() {
     if self.games.isEmpty {
@@ -134,18 +145,20 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let model = self.filteredGames[indexPath.row]
     guard model.status == MatchStatus.live else {
-        var title = ""
+        var banner_title = ""
         if model.status == MatchStatus.upcomming {
-            title = "Game hasn't started yet. Please come back later."
+            banner_title = "Game hasn't started yet. Please come back later."
         } else if model.status == MatchStatus.final {
-            title = "Game has already ended."
+            banner_title = "Game has already ended."
         }
-        let banner = StatusBarNotificationBanner(title: title, style: .warning)
+        let banner = StatusBarNotificationBanner(title: banner_title, style: .warning)
+        if !banner.isDisplaying {
         banner.autoDismiss = false
         banner.show()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             banner.dismiss()
         })
+        }
         return
     }
     let detailNaviVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsNavigationController") as! UINavigationController
@@ -243,6 +256,8 @@ extension HomeViewController: GameTableViewCellDelegate {
     vc.game = game
     self.navigationController?.pushViewController(vc, animated: true)
   }
+
+
 }
 
 extension HomeViewController: UISearchBarDelegate {
