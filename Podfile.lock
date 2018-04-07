@@ -101,11 +101,15 @@ PODS:
   - GTMSessionFetcher/Full (1.1.14):
     - GTMSessionFetcher/Core (= 1.1.14)
   - leveldb-library (1.20)
+  - MarqueeLabel/Swift (3.1.4)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - NotificationBannerSwift (1.6.2):
+    - MarqueeLabel/Swift
+    - SnapKit (~> 4.0)
   - NSObject+Rx (4.3.0):
     - RxSwift (~> 4.0)
   - Nuke (6.1)
@@ -114,6 +118,7 @@ PODS:
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - SnapKit (4.0.0)
   - SVProgressHUD (2.2.5)
   - SwiftyPickerPopover (6.1.0)
 
@@ -126,6 +131,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - GoogleSignIn
+  - NotificationBannerSwift
   - NSObject+Rx
   - Nuke
   - ObjectMapper
@@ -155,16 +161,19 @@ SPEC CHECKSUMS:
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 390ea358e5a0d0133153806f744662dad933d06b
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NotificationBannerSwift: 4eceb2add9d5eaa0596c63d49690b4d6476e74ec
   NSObject+Rx: 9a5eeff5e08156f849fa973514456f28eef08742
   Nuke: 0513c8d156bd9a2adb15db70622c3527f44542c5
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyPickerPopover: f1bb928efd60e4c754aa957c1bb67372465e9ccb
 
-PODFILE CHECKSUM: 6775a6938d94410939a7e3e5f1b8e20642e561f1
+PODFILE CHECKSUM: 4cc9a4c52fb24800dacdccb384bcb93c3a059512
 
 COCOAPODS: 1.4.0

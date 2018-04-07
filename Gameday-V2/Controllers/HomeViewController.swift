@@ -11,6 +11,7 @@ import Firebase
 import RxSwift
 import SVProgressHUD
 import ObjectMapper
+import NotificationBannerSwift
 
 class HomeViewController: UIViewController {
 
@@ -131,9 +132,22 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: false)
     let model = self.filteredGames[indexPath.row]
-    guard model.status == MatchStatus.live else { return }
+    guard model.status == MatchStatus.live else {
+        var title = ""
+        if model.status == MatchStatus.upcomming {
+            title = "Game hasn't started yet. Please come back later."
+        } else if model.status == MatchStatus.final {
+            title = "Game has already ended."
+        }
+        let banner = StatusBarNotificationBanner(title: title, style: .warning)
+        banner.autoDismiss = false
+        banner.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            banner.dismiss()
+        })
+        return
+    }
     let detailNaviVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsNavigationController") as! UINavigationController
     let detailVC = detailNaviVC.viewControllers.first as! DetailsViewController
     detailVC.model = model

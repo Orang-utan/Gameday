@@ -75,7 +75,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 
   @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
     
-    let alert = UIAlertController(title: "Logout?", message: "Are you sure you want to logout of Gameday?", preferredStyle: UIAlertControllerStyle.alert)
+    let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout of Gameday?", preferredStyle: UIAlertControllerStyle.alert)
     alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
         try! Auth.auth().signOut()
         let loginVC = self.storyboard?.instantiateInitialViewController()

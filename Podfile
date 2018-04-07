@@ -6,6 +6,7 @@ target 'Gameday-V2' do
   use_frameworks!
 
   # Pods for Gameday-V2
+  pod 'NotificationBannerSwift'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Database'

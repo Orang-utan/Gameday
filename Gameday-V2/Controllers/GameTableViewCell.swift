@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import NotificationBannerSwift
 
 protocol GameTableViewCellDelegate: class {
   func didPressedLikeButton(cell: UITableViewCell)
@@ -144,11 +146,17 @@ class GameTableViewCell: UITableViewCell {
       alert.addAction(yesAction)
       UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     } else {
-      self.delegate?.didPressedRSVPButton(cell: self)
-      let fansNumber = NSMutableAttributedString(string: "\(model.fansCount + 1)", attributes:attrs_black)
-      let fans = NSMutableAttributedString(string:" Fans", attributes:attrs_gray)
-      fansNumber.append(fans)
-      self.rsvpLabel.attributedText = fansNumber
+        let banner = StatusBarNotificationBanner(title: "You are signed up for this game!", style: .success)
+        banner.autoDismiss = false
+        banner.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+           banner.dismiss()
+        })
+        self.delegate?.didPressedRSVPButton(cell: self)
+        let fansNumber = NSMutableAttributedString(string: "\(model.fansCount + 1)", attributes:attrs_black)
+        let fans = NSMutableAttributedString(string:" Fans", attributes:attrs_gray)
+        fansNumber.append(fans)
+        self.rsvpLabel.attributedText = fansNumber
     }
 
     self.rsvpButton.isSelected = !self.rsvpButton.isSelected

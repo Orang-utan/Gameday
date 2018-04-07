@@ -272,7 +272,6 @@
                                                         <constraint firstAttribute="height" constant="35" id="MOL-2X-WIU"/>
                                                     </constraints>
                                                     <state key="normal" image="Clap"/>
-                                                    <state key="selected" image="liked_icon"/>
                                                     <connections>
                                                         <action selector="likeTapped:" destination="CND-UJ-3p9" eventType="touchUpInside" id="IeM-KA-mg2"/>
                                                     </connections>
@@ -693,7 +692,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1690.4000000000001" y="542.87856071964018"/>
+            <point key="canvasLocation" x="-609" y="658"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="wHb-Ds-HjK">
@@ -788,7 +787,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGH-70-ZyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-751.20000000000005" y="1226.5367316341831"/>
+            <point key="canvasLocation" x="-86" y="1342"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="iVb-Li-L8O">
@@ -1284,7 +1283,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Pe-Db-IjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1690.4000000000001" y="1226.5367316341831"/>
+            <point key="canvasLocation" x="-609" y="1342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QmZ-k0-bJd">
@@ -1404,6 +1403,5 @@
         <image name="Search" width="25" height="25"/>
         <image name="Trash" width="25" height="25"/>
         <image name="User" width="25" height="25"/>
-        <image name="liked_icon" width="33" height="33"/>
     </resources>
 </document>
