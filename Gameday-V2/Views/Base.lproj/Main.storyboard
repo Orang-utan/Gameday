@@ -1341,7 +1341,11 @@
                             <outlet property="delegate" destination="caK-iF-8T3" id="CcU-7b-Coc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Fans" id="9W1-ag-56O"/>
+                    <navigationItem key="navigationItem" title="Fans" id="9W1-ag-56O">
+                        <barButtonItem key="leftBarButtonItem" image="Back" id="hTT-p1-0uQ">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znv-sX-zKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1372,6 +1376,7 @@
     </scenes>
     <resources>
         <image name="Add" width="64" height="64"/>
+        <image name="Back" width="25" height="25"/>
         <image name="Berkshire_School" width="110" height="103"/>
         <image name="Cancel" width="25" height="25"/>
         <image name="Clap" width="64" height="64"/>
