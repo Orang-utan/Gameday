@@ -221,6 +221,14 @@ extension HomeViewController: GameTableViewCellDelegate {
       })
       .disposed(by: rx.disposeBag)
   }
+
+  func didPressedRSVPLabel(cell: UITableViewCell) {
+    guard let index = self.tableView.indexPath(for: cell)?.row else { return }
+    let game = self.filteredGames[index]
+    let vc = self.storyboard?.instantiateViewController(withIdentifier: "FansTableViewController") as! FansTableViewController
+    vc.game = game
+    self.navigationController?.pushViewController(vc, animated: true)
+  }
 }
 
 extension HomeViewController: UISearchBarDelegate {

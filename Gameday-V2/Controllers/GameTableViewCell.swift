@@ -11,6 +11,7 @@ import UIKit
 protocol GameTableViewCellDelegate: class {
   func didPressedLikeButton(cell: UITableViewCell)
   func didPressedRSVPButton(cell: UITableViewCell)
+  func didPressedRSVPLabel(cell: UITableViewCell)
 }
 
 class GameTableViewCell: UITableViewCell {
@@ -115,6 +116,11 @@ class GameTableViewCell: UITableViewCell {
 
     userProfile.layer.cornerRadius = userProfile.bounds.height / 2
     userProfile.clipsToBounds = true
+
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapGestureOnRSVPLabel))
+    self.rsvpLabel.isUserInteractionEnabled = true
+    self.rsvpLabel.addGestureRecognizer(tapGesture)
+
   }
 
   override func prepareForReuse() {
@@ -156,6 +162,10 @@ class GameTableViewCell: UITableViewCell {
     likeNumber.append(like)
     self.likeButton.isSelected = true
     self.likeLabel.attributedText = likeNumber
+  }
+
+  @objc func didTapGestureOnRSVPLabel() {
+    self.delegate?.didPressedRSVPLabel(cell: self)
   }
 
 }

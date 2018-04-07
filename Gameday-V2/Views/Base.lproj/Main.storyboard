@@ -1308,22 +1308,27 @@
         <!--Fans-->
         <scene sceneID="NpH-Uh-ltV">
             <objects>
-                <tableViewController id="caK-iF-8T3" customClass="FansTableViewController" customModule="Gameday_V2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FansTableViewController" id="caK-iF-8T3" customClass="FansTableViewController" customModule="Gameday_V2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2fc-2h-9gI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DCo-OE-Eh0">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" id="DCo-OE-Eh0" customClass="FanTableViewCell" customModule="Gameday_V2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DCo-OE-Eh0" id="th5-Qk-F2E">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="eHm-9R-tOa">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="eHm-9R-tOa">
                                             <rect key="frame" x="16" y="4" width="35" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <real key="value" value="17.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Victor Hernandaz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8f-wj-vy7">
                                             <rect key="frame" x="59" y="12" width="228" height="21"/>
@@ -1334,6 +1339,10 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="z8f-wj-vy7" id="mbd-iC-pqM"/>
+                                    <outlet property="profileImageView" destination="eHm-9R-tOa" id="Uxu-UE-RhV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1344,6 +1353,9 @@
                     <navigationItem key="navigationItem" title="Fans" id="9W1-ag-56O">
                         <barButtonItem key="leftBarButtonItem" image="Back" id="hTT-p1-0uQ">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="caK-iF-8T3" id="sPU-fO-keh"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
