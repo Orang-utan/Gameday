@@ -33,10 +33,15 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         profileImageButton.layer.cornerRadius = profileImageButton.bounds.height / 2
         profileImageButton.clipsToBounds = true
+        profileImageButton.imageView?.contentMode = .scaleAspectFit
         
         imagePicker.delegate = self
     }
-
+    
+    @IBAction func dismissKeyboardTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     @IBAction func createAccountTapped(_ sender: UIButton) {
         guard let first_name = firstNameTextField.text else { return }
         guard let last_name = lastNameTextField.text else { return }

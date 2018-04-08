@@ -15,14 +15,14 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        button.setTitle("Add", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.gray , for: .highlighted)
-        
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 32
-        button.layer.borderWidth = 4
-        button.layer.borderColor = UIColor(hex: 0x3bca9c).cgColor
+//        button.setTitle("Add", for: .normal)
+//        button.setTitleColor(.black, for: .normal)
+//        button.setTitleColor(.gray , for: .highlighted)
+//        button.backgroundColor = .white
+        button.setImage(#imageLiteral(resourceName: "Add_TabBar"), for: .normal)
+        //button.layer.cornerRadius = 32
+        //button.layer.borderWidth = 4
+        //button.layer.borderColor = UIColor(hex: 0x3bca9c).cgColor
         self.view.insertSubview(button, aboveSubview: self.tabBar)
         
         guard let tabItems = tabBar.items else { return }
@@ -38,9 +38,24 @@ class MainTabBarViewController: UITabBarController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        button.frame = CGRect.init(x: self.tabBar.center.x - 32, y: self.view.bounds.height - 70, width: 64, height: 64)
         // safe place to set the frame of button manually
-        button.frame = CGRect.init(x: self.tabBar.center.x - 32, y: self.view.bounds.height - 100, width: 64, height: 64)
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("iPhone 5 or 5S or 5C")
+            case 1334:
+                print("iPhone 6/6S/7/8")
+            case 1920, 2208:
+                print("iPhone 6+/6S+/7+/8+")
+            case 2436:
+                print("iPhone X")
+                button.frame = CGRect.init(x: self.tabBar.center.x - 32, y: self.view.bounds.height - 100, width: 64, height: 64)
+            default:
+                print("unknown")
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

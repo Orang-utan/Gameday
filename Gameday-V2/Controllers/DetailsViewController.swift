@@ -89,7 +89,7 @@ class DetailsViewController: UIViewController {
   @IBAction func minusAwayButtonPressed(_ sender: Any) {
     self.localAwayScore -= 1
     self.localAwayScore = self.localAwayScore < 0 ? 0 : self.localAwayScore
-    self.homeScoreTextField.text = String(self.localAwayScore)
+    self.awayScoreTextField.text = String(self.localAwayScore)
   }
 
   @IBAction func saveScoreButtonPressed(_ sender: Any) {
