@@ -434,11 +434,6 @@
                             <constraint firstItem="9dO-Yr-xd3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wi7-qp-pBl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="tg3-km-LIL"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Me8-8a-3KN">
                         <barButtonItem key="leftBarButtonItem" image="Search" id="6AW-sg-lAz">
