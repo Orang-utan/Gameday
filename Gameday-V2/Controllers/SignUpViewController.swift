@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import Photos
 
-class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -36,6 +37,18 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
         profileImageButton.imageView?.contentMode = .scaleAspectFit
         
         imagePicker.delegate = self
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        }
     }
     
     @IBAction func dismissKeyboardTapped(_ sender: UITapGestureRecognizer) {

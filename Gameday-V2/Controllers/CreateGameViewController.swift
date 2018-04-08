@@ -26,7 +26,8 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var locationTextField: SearchTextField!
   @IBOutlet weak var checkBox: Checkbox!
   @IBOutlet weak var saveGame: UIButton!
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    
   let sportsChoices = ["Baseball", "Crew", "Lacrosse","Softball", "Track and Field"]
   let schoolFilters: [String] = ["Berkshire", "Taft", "Hotchkiss", "Salisbury"]
 
@@ -95,8 +96,19 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     if textField == sportsTextField || textField == levelTextField || textField == timeTextField || textField == dateTextField {
       return false
     }
+    
+    if textField == locationTextField {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+    }
+    
     return true
   }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == locationTextField {
+            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        }
+    }
 
   @IBAction func sportsTextFieldTapped(_ sender: UITapGestureRecognizer) {
     view.endEditing(true)
