@@ -22,6 +22,8 @@ target 'Gameday-V2' do
   pod 'DateToolsSwift'
   pod 'SVProgressHUD'
   pod 'Nuke'
+  pod 'JTAppleCalendar'
+  pod 'Popover'
 
   target 'Gameday-V2Tests' do
     inherit! :search_paths

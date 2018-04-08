@@ -12,28 +12,28 @@ import RxSwift
 import SVProgressHUD
 import ObjectMapper
 import NotificationBannerSwift
-
+import Popover
 
 class HomeViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var timeSegmentControl: UISegmentedControl!
   @IBOutlet weak var searchTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var dateFilterButton: UIButton!
 
-    var data: [SportsGame] = []
-    private var games: [GamePostModel] = []
-    private var filteredGames: [GamePostModel] = []
+  private var popup: Popover?
+  private var currentFilterDate = Date()
+  private let formatter = DateFormatter()
+
+  var data: [SportsGame] = []
+  private var games: [GamePostModel] = []
+  private var filteredGames: [GamePostModel] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
     tableView.estimatedRowHeight = 0
-
-    timeSegmentControl.selectedSegmentIndex = UISegmentedControlNoSegment
-    timeSegmentControl.layer.cornerRadius = 0
-    timeSegmentControl.addTarget(self, action: #selector(segmentControlDidPressed), for: UIControlEvents.valueChanged)
 
     UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white], for: .normal)
     self.searchBar.delegate = self
@@ -42,18 +42,21 @@ class HomeViewController: UIViewController {
     let imageView = UIImageView(image:logo)
     imageView.contentMode = .scaleAspectFit
     self.navigationItem.titleView = imageView
-    
+
+    self.formatter.dateFormat = "E, MMM dd"
+
+    self.dateFilterButton.setTitle("Today", for: UIControlState.normal)
   }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(showCreateGame), name: Notification.Name(rawValue: "addGameTabBarTapped"), object: nil)
-        self.getDatas()
-    }
-    
-    @objc func showCreateGame(notification: Notification){
-        performSegue(withIdentifier: "HomeToCreateSegue", sender: self)
-    }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    NotificationCenter.default.addObserver(self, selector: #selector(showCreateGame), name: Notification.Name(rawValue: "addGameTabBarTapped"), object: nil)
+    self.getDatas()
+  }
+
+  @objc func showCreateGame(notification: Notification){
+    performSegue(withIdentifier: "HomeToCreateSegue", sender: self)
+  }
 
   private func getDatas() {
     if self.games.isEmpty {
@@ -84,25 +87,31 @@ class HomeViewController: UIViewController {
         let sortedFinalGames = games.filter { $0.status == MatchStatus.final }.sorted(by: { $0.createAt > $1.createAt })
         let sortedGames = sortedLiveGames + sortedUpcomingGames + sortedFinalGames
         self?.games = sortedGames
-        self?.filteredGames = sortedGames
-        self?.tableView.reloadData()
+        self?.loadFilter()
         }, onError: { (error) in
           print(error)
       })
       .disposed(by: rx.disposeBag)
   }
 
-  @objc func segmentControlDidPressed() {
-    if timeSegmentControl.selectedSegmentIndex == UISegmentedControlNoSegment {
-      self.filteredGames = self.games
-    } else if timeSegmentControl.selectedSegmentIndex == 0 {
-      self.filteredGames = self.games.filter { $0.status == MatchStatus.upcomming }
-    } else if timeSegmentControl.selectedSegmentIndex == 1 {
-      self.filteredGames = self.games.filter { $0.startDate.isToday }
+  private func setupFilterDateTitle() {
+    if self.currentFilterDate.isToday {
+      self.dateFilterButton.setTitle("Today", for: UIControlState.normal)
+    } else if self.currentFilterDate.isTomorrow {
+      self.dateFilterButton.setTitle("Tomorrow", for: UIControlState.normal)
+    } else if self.currentFilterDate.isYesterday {
+      self.dateFilterButton.setTitle("Yesterday", for: UIControlState.normal)
     } else {
-      self.filteredGames = self.games.filter { $0.status == MatchStatus.final }
+      self.dateFilterButton.setTitle(self.formatter.string(from: self.currentFilterDate), for: UIControlState.normal)
     }
+  }
 
+  private func loadFilter() {
+    let sortedLiveGames = games.filter { $0.status == MatchStatus.live }.sorted(by: { $0.createAt > $1.createAt }).filter { $0.startDate.isSameDay(date: self.currentFilterDate) }
+    let sortedUpcomingGames = games.filter { $0.status == MatchStatus.upcomming }.sorted(by: { $0.createAt > $1.createAt }).filter { $0.startDate.isSameDay(date: self.currentFilterDate) }
+    let sortedFinalGames = games.filter { $0.status == MatchStatus.final }.sorted(by: { $0.createAt > $1.createAt }).filter { $0.startDate.isSameDay(date: self.currentFilterDate) }
+    let sortedGames = sortedLiveGames + sortedUpcomingGames + sortedFinalGames
+    self.filteredGames = sortedGames
     self.tableView.reloadData()
   }
 
@@ -112,7 +121,7 @@ class HomeViewController: UIViewController {
 
   @IBAction func searchButtonPressed(_ sender: Any) {
     let isOpenned = self.searchTopConstraint.constant == 0
-    self.searchTopConstraint.constant = isOpenned ? -40 : 0
+    self.searchTopConstraint.constant = isOpenned ? -56 : 0
     if isOpenned {
       self.view.endEditing(true)
     } else {
@@ -128,6 +137,28 @@ class HomeViewController: UIViewController {
       }
     })
   }
+
+  @IBAction func nextDateButtonPressed(_ sender: Any) {
+    self.currentFilterDate = self.currentFilterDate.add(1.days)
+    self.setupFilterDateTitle()
+    self.loadFilter()
+  }
+
+  @IBAction func previousDateButtonPressed(_ sender: Any) {
+    self.currentFilterDate = self.currentFilterDate.subtract(1.days)
+    self.setupFilterDateTitle()
+    self.loadFilter()
+  }
+
+  @IBAction func openCalendarButtonPressed(_ sender: Any) {
+    let calendarView = CalendarView(frame: CGRect(x: 0, y: 0, width: 320, height: 350))
+    calendarView.selectDate = self.currentFilterDate
+    calendarView.delegate = self
+    let popover = Popover(options: [PopoverOption.arrowSize(CGSize(width: 50, height: 20))])
+    popover.show(calendarView, fromView: self.dateFilterButton.superview!)
+    self.popup = popover
+  }
+  
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
@@ -145,29 +176,29 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let model = self.filteredGames[indexPath.row]
     guard model.status == MatchStatus.live else {
-        var banner_title = ""
-        if model.status == MatchStatus.upcomming {
-            banner_title = "Game hasn't started yet. Please come back later."
-        } else if model.status == MatchStatus.final {
-            banner_title = "Game has already ended."
-        }
-        let banner = StatusBarNotificationBanner(title: banner_title, style: .warning)
-        let numberOfBanners = NotificationBannerQueue.default.numberOfBanners
-        print(numberOfBanners)
-        if numberOfBanners == 1 {
-            return
-        }
-            banner.dismiss()
-            banner.autoDismiss = false
-            banner.onTap = {
-                banner.dismiss()
-            }
-            banner.show()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                banner.dismiss()
-            })
-        
+      var banner_title = ""
+      if model.status == MatchStatus.upcomming {
+        banner_title = "Game hasn't started yet. Please come back later."
+      } else if model.status == MatchStatus.final {
+        banner_title = "Game has already ended."
+      }
+      let banner = StatusBarNotificationBanner(title: banner_title, style: .warning)
+      let numberOfBanners = NotificationBannerQueue.default.numberOfBanners
+      print(numberOfBanners)
+      if numberOfBanners == 1 {
         return
+      }
+      banner.dismiss()
+      banner.autoDismiss = false
+      banner.onTap = {
+        banner.dismiss()
+      }
+      banner.show()
+      DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        banner.dismiss()
+      })
+
+      return
     }
     let detailNaviVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsNavigationController") as! UINavigationController
     let detailVC = detailNaviVC.viewControllers.first as! DetailsViewController
@@ -264,8 +295,6 @@ extension HomeViewController: GameTableViewCellDelegate {
     vc.game = game
     self.navigationController?.pushViewController(vc, animated: true)
   }
-
-
 }
 
 extension HomeViewController: UISearchBarDelegate {
@@ -283,7 +312,18 @@ extension HomeViewController: UISearchBarDelegate {
     searchBar.text = ""
     self.view.endEditing(true)
     self.searchButtonPressed(self)
-    self.segmentControlDidPressed()
+    self.loadFilter()
+  }
+}
+
+extension HomeViewController: CalendarViewDelegate {
+  func didSelectedDate(date: Date) {
+    if date.isSameDay(date: self.currentFilterDate) == false {
+      self.popup?.dismiss()
+    }
+    self.currentFilterDate = date
+    self.setupFilterDateTitle()
+    self.loadFilter()
   }
 }
 

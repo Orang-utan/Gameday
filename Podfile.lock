@@ -100,6 +100,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.14)
   - GTMSessionFetcher/Full (1.1.14):
     - GTMSessionFetcher/Core (= 1.1.14)
+  - JTAppleCalendar (7.1.5)
   - leveldb-library (1.20)
   - MarqueeLabel/Swift (3.1.4)
   - nanopb (0.3.8):
@@ -114,6 +115,7 @@ PODS:
     - RxSwift (~> 4.0)
   - Nuke (6.1)
   - ObjectMapper (3.1.0)
+  - Popover (1.2.0)
   - Protobuf (3.5.0)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
@@ -131,10 +133,12 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - GoogleSignIn
+  - JTAppleCalendar
   - NotificationBannerSwift
   - "NSObject+Rx"
   - Nuke
   - ObjectMapper
+  - Popover
   - RxCocoa
   - RxSwift
   - SVProgressHUD
@@ -161,6 +165,7 @@ SPEC REPOS:
     - gRPC-RxLibrary
     - GTMOAuth2
     - GTMSessionFetcher
+    - JTAppleCalendar
     - leveldb-library
     - MarqueeLabel
     - nanopb
@@ -168,6 +173,7 @@ SPEC REPOS:
     - "NSObject+Rx"
     - Nuke
     - ObjectMapper
+    - Popover
     - Protobuf
     - RxCocoa
     - RxSwift
@@ -195,6 +201,7 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: a41a4652d220f230ba1c0491a94ce2ee04c6180a
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 390ea358e5a0d0133153806f744662dad933d06b
+  JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -202,6 +209,7 @@ SPEC CHECKSUMS:
   "NSObject+Rx": 9a5eeff5e08156f849fa973514456f28eef08742
   Nuke: 0513c8d156bd9a2adb15db70622c3527f44542c5
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
@@ -209,6 +217,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyPickerPopover: f1bb928efd60e4c754aa957c1bb67372465e9ccb
 
-PODFILE CHECKSUM: 4cc9a4c52fb24800dacdccb384bcb93c3a059512
+PODFILE CHECKSUM: 0f0cfabaed3d498aec45e5e3c0456fb2def7f788
 
 COCOAPODS: 1.5.0
