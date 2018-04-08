@@ -88,6 +88,12 @@ class GameTableViewCell: UITableViewCell {
             likeButton.setImage(#imageLiteral(resourceName: "Clap_Unfilled"), for: .normal)
         }
         
+        if model.isFan {
+            rsvpButton.setImage(#imageLiteral(resourceName: "RSVP_Filled"), for: .normal)
+        } else {
+            rsvpButton.setImage(#imageLiteral(resourceName: "RSVP_Unfilled"), for: .normal)
+        }
+        
     if model.status == MatchStatus.upcomming {
         //upcoming
         self.bgView.backgroundColor = UIColor(hex: 0xfd9326)
@@ -145,6 +151,7 @@ class GameTableViewCell: UITableViewCell {
       alert.addAction(UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
       let yesAction = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { (_) in
         self.delegate?.didPressedRSVPButton(cell: self)
+        self.rsvpButton.setImage(#imageLiteral(resourceName: "RSVP_Unfilled"), for: .normal)
         let fansNumber = NSMutableAttributedString(string: "\(self.model.fansCount - 1)", attributes: self.attrs_black)
         let fans = NSMutableAttributedString(string:" Fans", attributes: self.attrs_gray)
         fansNumber.append(fans)
@@ -159,6 +166,7 @@ class GameTableViewCell: UITableViewCell {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
            banner.dismiss()
         })
+        self.rsvpButton.setImage(#imageLiteral(resourceName: "RSVP_Filled"), for: .normal)
         self.delegate?.didPressedRSVPButton(cell: self)
         let fansNumber = NSMutableAttributedString(string: "\(model.fansCount + 1)", attributes:attrs_black)
         let fans = NSMutableAttributedString(string:" Fans", attributes:attrs_gray)
@@ -171,6 +179,12 @@ class GameTableViewCell: UITableViewCell {
 
   @IBAction func likeTapped(_ sender: UIButton) {
     guard self.likeButton.isSelected == false else {
+        let banner = StatusBarNotificationBanner(title: "You have already liked this game!", style: .warning)
+        banner.autoDismiss = false
+        banner.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            banner.dismiss()
+        })
         return
     }
     likeButton.setImage(#imageLiteral(resourceName: "Clap_Filled"), for: .normal)

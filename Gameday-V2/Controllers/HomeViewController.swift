@@ -143,8 +143,10 @@ class HomeViewController: UIViewController {
     
     if filteredGames.count == 0 {
         noGamesView.isHidden = false
+        tableView.isScrollEnabled = false
     } else {
         noGamesView.isHidden = true
+        tableView.isScrollEnabled = true
     }
     
     self.tableView.reloadData()

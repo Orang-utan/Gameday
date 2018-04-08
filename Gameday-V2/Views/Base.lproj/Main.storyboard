@@ -301,7 +301,7 @@
                                                         <constraint firstAttribute="width" constant="35" id="bA7-7S-hve"/>
                                                         <constraint firstAttribute="height" constant="35" id="pmD-wX-DfT"/>
                                                     </constraints>
-                                                    <state key="normal" image="RSVP"/>
+                                                    <state key="normal" image="RSVP_Unfilled"/>
                                                     <connections>
                                                         <action selector="rsvpTapped:" destination="CND-UJ-3p9" eventType="touchUpInside" id="9fM-4W-j4R"/>
                                                     </connections>
@@ -401,7 +401,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg3-km-LIL">
-                                <rect key="frame" x="0.0" y="188" width="375" height="430"/>
+                                <rect key="frame" x="0.0" y="185" width="375" height="433"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oops. No game found. Tap &quot;+&quot; to create a game for your team!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0t-9c-A0O">
                                         <rect key="frame" x="46" y="242" width="283" height="59"/>
@@ -421,7 +421,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="tg3-km-LIL" firstAttribute="top" secondItem="9dO-Yr-xd3" secondAttribute="bottom" constant="68" id="2hY-bl-ozk"/>
+                            <constraint firstItem="tg3-km-LIL" firstAttribute="top" secondItem="9dO-Yr-xd3" secondAttribute="bottom" constant="65" id="2hY-bl-ozk"/>
                             <constraint firstItem="7bX-iQ-XCS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2nZ-m0-yv7"/>
                             <constraint firstItem="7bX-iQ-XCS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Onz-tM-mSE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dO-Yr-xd3" secondAttribute="trailing" id="P3s-mE-03V"/>
@@ -434,6 +434,11 @@
                             <constraint firstItem="9dO-Yr-xd3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wi7-qp-pBl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="tg3-km-LIL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Me8-8a-3KN">
                         <barButtonItem key="leftBarButtonItem" image="Search" id="6AW-sg-lAz">
@@ -1523,6 +1528,7 @@
         <image name="Neutral User Profile Picture" width="128" height="128"/>
         <image name="Profile Picture" width="64" height="64"/>
         <image name="RSVP" width="128" height="128"/>
+        <image name="RSVP_Unfilled" width="37" height="37"/>
         <image name="Rectangle" width="25" height="5"/>
         <image name="Referee" width="256" height="256"/>
         <image name="Search" width="25" height="25"/>
