@@ -152,13 +152,21 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             banner_title = "Game has already ended."
         }
         let banner = StatusBarNotificationBanner(title: banner_title, style: .warning)
-        if !banner.isDisplaying {
-        banner.autoDismiss = false
-        banner.show()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            banner.dismiss()
-        })
+        let numberOfBanners = NotificationBannerQueue.default.numberOfBanners
+        print(numberOfBanners)
+        if numberOfBanners == 1 {
+            return
         }
+            banner.dismiss()
+            banner.autoDismiss = false
+            banner.onTap = {
+                banner.dismiss()
+            }
+            banner.show()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                banner.dismiss()
+            })
+        
         return
     }
     let detailNaviVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsNavigationController") as! UINavigationController
