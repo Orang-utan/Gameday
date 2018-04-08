@@ -324,7 +324,7 @@
                                                         <constraint firstAttribute="width" constant="35" id="2Hs-ea-jHV"/>
                                                         <constraint firstAttribute="height" constant="35" id="MOL-2X-WIU"/>
                                                     </constraints>
-                                                    <state key="normal" image="Clap"/>
+                                                    <state key="normal" image="Clap_Unfilled"/>
                                                     <connections>
                                                         <action selector="likeTapped:" destination="CND-UJ-3p9" eventType="touchUpInside" id="IeM-KA-mg2"/>
                                                     </connections>
@@ -400,14 +400,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg3-km-LIL">
+                                <rect key="frame" x="0.0" y="188" width="375" height="430"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oops. No game found. Tap &quot;+&quot; to create a game for your team!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0t-9c-A0O">
+                                        <rect key="frame" x="46" y="242" width="283" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Referee" translatesAutoresizingMaskIntoConstraints="NO" id="P7s-zu-e2R">
+                                        <rect key="frame" x="123" y="106" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="tg3-km-LIL" firstAttribute="top" secondItem="9dO-Yr-xd3" secondAttribute="bottom" constant="68" id="2hY-bl-ozk"/>
                             <constraint firstItem="7bX-iQ-XCS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2nZ-m0-yv7"/>
                             <constraint firstItem="7bX-iQ-XCS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Onz-tM-mSE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9dO-Yr-xd3" secondAttribute="trailing" id="P3s-mE-03V"/>
                             <constraint firstItem="7bX-iQ-XCS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VtH-q3-nPe"/>
+                            <constraint firstItem="tg3-km-LIL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="a0o-a7-80w"/>
                             <constraint firstItem="9dO-Yr-xd3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dij-Mg-mkH"/>
+                            <constraint firstItem="tg3-km-LIL" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="dno-eF-MLl"/>
+                            <constraint firstItem="tg3-km-LIL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ls8-TU-IAW"/>
                             <constraint firstItem="7bX-iQ-XCS" firstAttribute="top" secondItem="9dO-Yr-xd3" secondAttribute="bottom" id="rsX-Al-72E"/>
                             <constraint firstItem="9dO-Yr-xd3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wi7-qp-pBl"/>
                         </constraints>
@@ -423,6 +445,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateFilterButton" destination="1HO-x5-EEv" id="7OI-ml-GhH"/>
+                        <outlet property="noGamesView" destination="tg3-km-LIL" id="Zfm-ML-FKy"/>
                         <outlet property="searchBar" destination="Fen-o6-ZwM" id="a00-sv-hBp"/>
                         <outlet property="searchTopConstraint" destination="H8i-rn-NdD" id="rq4-uc-n3n"/>
                         <outlet property="tableView" destination="7bX-iQ-XCS" id="eaK-6m-EF4"/>
@@ -1491,6 +1514,7 @@
         <image name="Berkshire_School" width="110" height="103"/>
         <image name="Cancel" width="25" height="25"/>
         <image name="Clap" width="64" height="64"/>
+        <image name="Clap_Unfilled" width="37" height="37"/>
         <image name="Exit" width="25" height="25"/>
         <image name="FootballBackground" width="972" height="777"/>
         <image name="Gameday Logo" width="217" height="69"/>
@@ -1500,6 +1524,7 @@
         <image name="Profile Picture" width="64" height="64"/>
         <image name="RSVP" width="128" height="128"/>
         <image name="Rectangle" width="25" height="5"/>
+        <image name="Referee" width="256" height="256"/>
         <image name="Search" width="25" height="25"/>
         <image name="Trash" width="25" height="25"/>
         <image name="User" width="25" height="25"/>

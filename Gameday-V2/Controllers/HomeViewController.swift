@@ -20,7 +20,8 @@ class HomeViewController: UIViewController {
   @IBOutlet weak var searchTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var dateFilterButton: UIButton!
-
+    @IBOutlet weak var noGamesView: UIView!
+    
   private var popup: Popover?
   private var currentFilterDate = Date()
   private let formatter = DateFormatter()
@@ -46,6 +47,16 @@ class HomeViewController: UIViewController {
     self.formatter.dateFormat = "E, MMM dd"
 
     self.dateFilterButton.setTitle("Today", for: UIControlState.normal)
+    
+    noGamesView.isHidden = true
+    
+    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.viewSwiped))
+    swipeRight.direction = UISwipeGestureRecognizerDirection.right
+    self.view.addGestureRecognizer(swipeRight)
+    
+    let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.viewSwiped))
+    swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+    self.view.addGestureRecognizer(swipeLeft)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +64,24 @@ class HomeViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(showCreateGame), name: Notification.Name(rawValue: "addGameTabBarTapped"), object: nil)
     self.getDatas()
   }
-
+    @objc func viewSwiped(_ sender: UISwipeGestureRecognizer) {
+        switch sender.direction {
+        case UISwipeGestureRecognizerDirection.right:
+            print("SWIPED RIGHT")
+            self.currentFilterDate = self.currentFilterDate.subtract(1.days)
+            self.setupFilterDateTitle()
+            self.loadFilter()
+        case UISwipeGestureRecognizerDirection.left:
+            print("SWIPED LEFT")
+            self.currentFilterDate = self.currentFilterDate.add(1.days)
+            self.setupFilterDateTitle()
+            self.loadFilter()
+        default:
+            break
+        }
+    }
+    
+    
   @objc func showCreateGame(notification: Notification){
     performSegue(withIdentifier: "HomeToCreateSegue", sender: self)
   }
@@ -112,6 +140,13 @@ class HomeViewController: UIViewController {
     let sortedFinalGames = games.filter { $0.status == MatchStatus.final }.sorted(by: { $0.createAt > $1.createAt }).filter { $0.startDate.isSameDay(date: self.currentFilterDate) }
     let sortedGames = sortedLiveGames + sortedUpcomingGames + sortedFinalGames
     self.filteredGames = sortedGames
+    
+    if filteredGames.count == 0 {
+        noGamesView.isHidden = false
+    } else {
+        noGamesView.isHidden = true
+    }
+    
     self.tableView.reloadData()
   }
 

@@ -82,6 +82,12 @@ class GameTableViewCell: UITableViewCell {
       self.homeScoreLabel.text = String(model.homeTeam.score)
       self.awayScoreLabel.text = String(model.awayTeam.score)
 
+        if model.isLiked {
+            likeButton.setImage(#imageLiteral(resourceName: "Clap_Filled"), for: .normal)
+        } else {
+            likeButton.setImage(#imageLiteral(resourceName: "Clap_Unfilled"), for: .normal)
+        }
+        
     if model.status == MatchStatus.upcomming {
         //upcoming
         self.bgView.backgroundColor = UIColor(hex: 0xfd9326)
@@ -122,10 +128,11 @@ class GameTableViewCell: UITableViewCell {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapGestureOnRSVPLabel))
     self.rsvpLabel.isUserInteractionEnabled = true
     self.rsvpLabel.addGestureRecognizer(tapGesture)
-
+    
   }
 
-  override func prepareForReuse() {
+    
+    override func prepareForReuse() {
     super.prepareForReuse()
 
     self.finalLabel.isHidden = true
@@ -163,7 +170,11 @@ class GameTableViewCell: UITableViewCell {
   }
 
   @IBAction func likeTapped(_ sender: UIButton) {
-    guard self.likeButton.isSelected == false else { return }
+    guard self.likeButton.isSelected == false else {
+        return
+    }
+    likeButton.setImage(#imageLiteral(resourceName: "Clap_Filled"), for: .normal)
+    
     self.delegate?.didPressedLikeButton(cell: self)
     let likeNumber = NSMutableAttributedString(string: "\(model.likesCount + 1)", attributes: attrs_black)
     let like = NSMutableAttributedString(string:" Likes", attributes: attrs_gray)
