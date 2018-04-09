@@ -50,6 +50,11 @@ class SignInOptionsViewController: UIViewController {
     data["photo_url"] = user.photoURL?.absoluteString
     data["creation_date"] = user.metadata.creationDate
 
+    if let deviceToken = Messaging.messaging().apnsToken {
+      let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+      data["device_token"] = deviceTokenString
+    }
+
     db.collection("users").document(user.uid).setData(data, options: SetOptions.merge()) { (error) in
       if let error = error { print(error) }
       self.pushToHomeControllerIfNeeded()
