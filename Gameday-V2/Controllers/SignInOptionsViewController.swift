@@ -56,9 +56,8 @@ class SignInOptionsViewController: UIViewController {
     data["photo_url"] = user.photoURL?.absoluteString
     data["creation_date"] = user.metadata.creationDate
 
-    if let deviceToken = Messaging.messaging().apnsToken {
-      let deviceTokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-      data["device_token"] = deviceTokenString
+    if let fcmToken = Messaging.messaging().fcmToken {
+      data["fcm_token"] = fcmToken
     }
 
     db.collection("users").document(user.uid).setData(data, options: SetOptions.merge()) { (error) in

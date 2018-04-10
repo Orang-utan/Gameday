@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Use Firebase library to configure APIs
     FirebaseApp.configure()
     GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+    Messaging.messaging().delegate = self
 
     // For iOS 10 display notification (sent via APNS)
     UNUserNotificationCenter.current().delegate = self
@@ -45,11 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     Messaging.messaging().apnsToken = deviceToken
-    if let userId = Auth.auth().currentUser?.uid {
-      let deviceTokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-      let tokenData = ["device_token": deviceTokenString]
-      db.collection("users").document(userId).updateData(tokenData)
-    }
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
@@ -76,4 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+}
+
+extension AppDelegate: MessagingDelegate {
+  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    if let userId = Auth.auth().currentUser?.uid {
+      let tokenData = ["fcm_token": fcmToken]
+      db.collection("users").document(userId).updateData(tokenData)
+    }
+    messaging.subscribe(toTopic: "game_started_and_game_ended")
+  }
 }
