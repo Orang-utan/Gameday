@@ -106,6 +106,7 @@
 		714C855A207485A80083FDAC /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		714C855C20748F7D0083FDAC /* GamePostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePostModel.swift; sourceTree = "<group>"; };
 		714C855E207494690083FDAC /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		716BE6DC207C58AC008B44B9 /* Gameday-V2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Gameday-V2.entitlements"; sourceTree = "<group>"; };
 		71F51DF020747FEF00F35FAA /* RxFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxFirestore.swift; sourceTree = "<group>"; };
 		71F51DF22074801C00F35FAA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7F1D1D1E60947701FB205E1A /* Pods-Gameday-V2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gameday-V2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gameday-V2UITests/Pods-Gameday-V2UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +191,7 @@
 		656FF12820706C6F00D5831D /* Gameday-V2 */ = {
 			isa = PBXGroup;
 			children = (
+				716BE6DC207C58AC008B44B9 /* Gameday-V2.entitlements */,
 				71F51DEF20747FC200F35FAA /* Helpers */,
 				654632332070895600C9C763 /* Util */,
 				656FF157207070F100D5831D /* Models */,
@@ -383,6 +385,11 @@
 				TargetAttributes = {
 					656FF12520706C6F00D5831D = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					656FF13920706C7000D5831D = {
 						CreatedOnToolsVersion = 9.3;
@@ -787,6 +794,7 @@
 			baseConfigurationReference = 59A4FAEF016A4F2EFE4760EA /* Pods-Gameday-V2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Gameday-V2/Gameday-V2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2/Info.plist";
@@ -807,6 +815,7 @@
 			baseConfigurationReference = 9EB319C79EB84D7D349E9898 /* Pods-Gameday-V2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Gameday-V2/Gameday-V2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2/Info.plist";

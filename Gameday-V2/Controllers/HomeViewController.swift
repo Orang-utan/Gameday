@@ -20,8 +20,8 @@ class HomeViewController: UIViewController {
   @IBOutlet weak var searchTopConstraint: NSLayoutConstraint!
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var dateFilterButton: UIButton!
-    @IBOutlet weak var noGamesView: UIView!
-    
+  @IBOutlet weak var noGamesView: UIView!
+
   private var popup: Popover?
   private var currentFilterDate = Date()
   private let formatter = DateFormatter()
@@ -64,25 +64,25 @@ class HomeViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(showCreateGame), name: Notification.Name(rawValue: "addGameTabBarTapped"), object: nil)
     self.getDatas()
   }
-    
-    @objc func viewSwiped(_ sender: UISwipeGestureRecognizer) {
-        switch sender.direction {
-        case UISwipeGestureRecognizerDirection.right:
-            print("SWIPED RIGHT")
-            self.currentFilterDate = self.currentFilterDate.subtract(1.days)
-            self.setupFilterDateTitle()
-            self.loadFilter()
-        case UISwipeGestureRecognizerDirection.left:
-            print("SWIPED LEFT")
-            self.currentFilterDate = self.currentFilterDate.add(1.days)
-            self.setupFilterDateTitle()
-            self.loadFilter()
-        default:
-            break
-        }
+
+  @objc func viewSwiped(_ sender: UISwipeGestureRecognizer) {
+    switch sender.direction {
+    case UISwipeGestureRecognizerDirection.right:
+      print("SWIPED RIGHT")
+      self.currentFilterDate = self.currentFilterDate.subtract(1.days)
+      self.setupFilterDateTitle()
+      self.loadFilter()
+    case UISwipeGestureRecognizerDirection.left:
+      print("SWIPED LEFT")
+      self.currentFilterDate = self.currentFilterDate.add(1.days)
+      self.setupFilterDateTitle()
+      self.loadFilter()
+    default:
+      break
     }
-    
-    
+  }
+
+
   @objc func showCreateGame(notification: Notification){
     performSegue(withIdentifier: "HomeToCreateSegue", sender: self)
   }
@@ -143,11 +143,11 @@ class HomeViewController: UIViewController {
     self.filteredGames = sortedGames
     
     if filteredGames.count == 0 {
-        noGamesView.isHidden = false
-        tableView.isScrollEnabled = false
+      noGamesView.isHidden = false
+      tableView.isScrollEnabled = false
     } else {
-        noGamesView.isHidden = true
-        tableView.isScrollEnabled = true
+      noGamesView.isHidden = true
+      tableView.isScrollEnabled = true
     }
     
     self.tableView.reloadData()
@@ -187,16 +187,16 @@ class HomeViewController: UIViewController {
     self.setupFilterDateTitle()
     self.loadFilter()
   }
-    
-    
-    @IBAction func openCalendarTapped(_ sender: UITapGestureRecognizer) {
-        let calendarView = CalendarView(frame: CGRect(x: 0, y: 0, width: 320, height: 350))
-        calendarView.selectDate = self.currentFilterDate
-        calendarView.delegate = self
-        let popover = Popover(options: [PopoverOption.arrowSize(CGSize(width: 50, height: 20))])
-        popover.show(calendarView, fromView: self.dateFilterButton.superview!)
-        self.popup = popover
-    }
+
+
+  @IBAction func openCalendarTapped(_ sender: UITapGestureRecognizer) {
+    let calendarView = CalendarView(frame: CGRect(x: 0, y: 0, width: 320, height: 350))
+    calendarView.selectDate = self.currentFilterDate
+    calendarView.delegate = self
+    let popover = Popover(options: [PopoverOption.arrowSize(CGSize(width: 50, height: 20))])
+    popover.show(calendarView, fromView: self.dateFilterButton.superview!)
+    self.popup = popover
+  }
   
 }
 
