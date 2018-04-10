@@ -64,6 +64,11 @@ class HomeViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(showCreateGame), name: Notification.Name(rawValue: "addGameTabBarTapped"), object: nil)
     self.getDatas()
   }
+    
+    @objc func showTutorial(notification: Notification){
+        print("FUCKCCKCKCK!!!Q!")
+    }
+    
     @objc func viewSwiped(_ sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case UISwipeGestureRecognizerDirection.right:

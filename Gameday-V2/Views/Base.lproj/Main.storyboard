@@ -475,14 +475,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="e.g. Berkshire" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47h-vs-Kk1" customClass="SearchTextField" customModule="Gameday_V2" customModuleProvider="target">
-                                        <rect key="frame" x="42" y="80" width="120" height="36"/>
+                                        <rect key="frame" x="42" y="80" width="135" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="e.g. Taft" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Cg-Tv-GDc" customClass="SearchTextField" customModule="Gameday_V2" customModuleProvider="target">
-                                        <rect key="frame" x="212" y="80" width="120" height="36"/>
+                                        <rect key="frame" x="197" y="80" width="135" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -772,6 +772,7 @@
                         <outlet property="googleSigninButton" destination="f68-83-Pxt" id="ULq-Mc-jEU"/>
                         <outlet property="loginButton" destination="bVu-7e-PSb" id="8nq-pc-oRW"/>
                         <outlet property="passwordTextField" destination="ThN-kB-vGf" id="A99-OG-Khj"/>
+                        <segue destination="1Ve-8n-fXC" kind="presentation" identifier="signInToTutorialSegue" modalTransitionStyle="coverVertical" id="6rc-3d-pqM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LC7-B9-Zbx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,7 +782,39 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-609" y="658"/>
+            <point key="canvasLocation" x="-1532" y="656.22188905547227"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="HgP-E7-eaq">
+            <objects>
+                <viewController id="1Ve-8n-fXC" customClass="TutorialViewController" customModule="Gameday_V2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VyP-CS-jGV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fam-a2-S1q">
+                                <rect key="frame" x="90" y="524" width="195" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.18960595129999999" green="0.79637485740000002" blue="0.60817915199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="continueTapped:" destination="1Ve-8n-fXC" eventType="touchUpInside" id="EUM-wV-2ao"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fA0-AB-wlX"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="fam-a2-S1q" id="0AR-lm-CYw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HpF-v8-9Yc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-679.20000000000005" y="655.32233883058473"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="wHb-Ds-HjK">
@@ -906,7 +939,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-87.200000000000003" y="1341.6791604197902"/>
+            <point key="canvasLocation" x="-678" y="1342"/>
         </scene>
         <!--Main Tab Bar View Controller-->
         <scene sceneID="iVb-Li-L8O">
@@ -928,11 +961,11 @@
             </objects>
             <point key="canvasLocation" x="170" y="553"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scores-->
         <scene sceneID="8PD-J9-9OC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sUY-YA-ziZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Scoreboard" id="fa0-ol-LcL"/>
+                    <tabBarItem key="tabBarItem" title="Scores" image="Scoreboard" id="fa0-ol-LcL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uZJ-Cg-xfe">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1092,7 +1125,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2c-jm-Vn4">
                                                     <rect key="frame" x="15" y="213" width="35" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="RSVP"/>
+                                                    <state key="normal" image="RSVP_Unfilled"/>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="YnP-5r-BQ4">
                                                     <rect key="frame" x="0.0" y="254" width="375" height="10"/>
@@ -1110,7 +1143,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppX-cZ-1S8">
                                                     <rect key="frame" x="325" y="213" width="35" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="Clap"/>
+                                                    <state key="normal" image="Clap_Unfilled"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="999 Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWr-0Y-UZl">
                                                     <rect key="frame" x="244" y="220" width="73" height="21"/>
@@ -1165,11 +1198,11 @@
             </objects>
             <point key="canvasLocation" x="1729" y="851"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Account-->
         <scene sceneID="3gl-q4-FkN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rjr-FF-att" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="User" landscapeImage="User" id="5QX-Si-9fx"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="User" landscapeImage="User" id="5QX-Si-9fx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8hb-ku-wWF">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1188,7 +1221,7 @@
             </objects>
             <point key="canvasLocation" x="970" y="851"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Update-->
         <scene sceneID="ZQ8-6F-enr">
             <objects>
                 <viewController id="f56-FX-mln" customClass="DetailsViewController" customModule="Gameday_V2" customModuleProvider="target" sceneMemberID="viewController">
@@ -1196,13 +1229,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Update scores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLo-Lq-Fpu">
-                                <rect key="frame" x="91" y="30" width="192" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGm-nT-Lbc">
                                 <rect key="frame" x="43" y="67" width="114" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -1343,7 +1369,7 @@
                         <color key="backgroundColor" red="0.081647776069999997" green="0.1060485318" blue="0.10203700509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="dd2-iM-fZI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Hrq-Q7-wNW">
+                    <navigationItem key="navigationItem" title="Update" id="Hrq-Q7-wNW">
                         <barButtonItem key="leftBarButtonItem" image="Cancel" id="gVC-BD-5wx">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -1406,7 +1432,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Pe-Db-IjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-850" y="1342"/>
+            <point key="canvasLocation" x="-1532" y="1342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QmZ-k0-bJd">
@@ -1417,6 +1443,9 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.081647776069999997" green="0.1060485318" blue="0.10203700509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1513,7 +1542,6 @@
         <image name="Back" width="25" height="25"/>
         <image name="Berkshire_School" width="110" height="103"/>
         <image name="Cancel" width="25" height="25"/>
-        <image name="Clap" width="64" height="64"/>
         <image name="Clap_Unfilled" width="37" height="37"/>
         <image name="Exit" width="25" height="25"/>
         <image name="FootballBackground" width="972" height="777"/>
@@ -1521,7 +1549,6 @@
         <image name="Hotchkiss_School" width="150" height="150"/>
         <image name="Neutral User Profile Picture" width="128" height="128"/>
         <image name="Profile Picture" width="64" height="64"/>
-        <image name="RSVP" width="128" height="128"/>
         <image name="RSVP_Unfilled" width="37" height="37"/>
         <image name="Rectangle" width="25" height="5"/>
         <image name="Referee" width="256" height="256"/>

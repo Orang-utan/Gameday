@@ -16,7 +16,7 @@ class SignInOptionsViewController: UIViewController {
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var googleSigninButton: GIDSignInButton!
-
+    
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -34,10 +34,16 @@ class SignInOptionsViewController: UIViewController {
 
     GIDSignIn.sharedInstance().delegate = self
     GIDSignIn.sharedInstance().uiDelegate = self
+    
+
   }
 
   private func pushToHomeControllerIfNeeded() {
     guard Auth.auth().currentUser != nil else { return }
+    print("Show tutorial here")
+    
+    performSegue(withIdentifier: "signInToTutorialSegue", sender: self)
+    
     let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
     UIApplication.shared.delegate?.window??.rootViewController = controller
   }
@@ -103,6 +109,7 @@ extension SignInOptionsViewController: GIDSignInDelegate {
     Auth.auth().signIn(with: credential) { (user, error) in
       if user != nil, error == nil {
         self.updateUserInfoToFirestore()
+        
         print("logged in")
       } else {
         print("error logging in: \(error!.localizedDescription)")

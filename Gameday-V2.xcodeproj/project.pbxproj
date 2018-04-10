@@ -28,6 +28,7 @@
 		65B178902071B77300B35549 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B1788F2071B77300B35549 /* UserProfile.swift */; };
 		65B178922071B7C400B35549 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B178912071B7C400B35549 /* UserService.swift */; };
 		65B178942071DD0E00B35549 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B178932071DD0E00B35549 /* DetailsViewController.swift */; };
+		65BACD2D207A9F14006DBE1F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BACD2C207A9F14006DBE1F /* TutorialViewController.swift */; };
 		65C86908207959DF006F62D8 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C86907207959DF006F62D8 /* MainTabBarViewController.swift */; };
 		65E2390E20710AB9004A5FFE /* SignInOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */; };
 		65E2391020715021004A5FFE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2390F20715021004A5FFE /* DateUtil.swift */; };
@@ -93,6 +94,7 @@
 		65B1788F2071B77300B35549 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		65B178912071B7C400B35549 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		65B178932071DD0E00B35549 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		65BACD2C207A9F14006DBE1F /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		65C86907207959DF006F62D8 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInOptionsViewController.swift; sourceTree = "<group>"; };
 		65E2390F20715021004A5FFE /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				65C86907207959DF006F62D8 /* MainTabBarViewController.swift */,
 				65E2390D20710AB9004A5FFE /* SignInOptionsViewController.swift */,
 				65A57B2220717D0300E2F8C1 /* SignUpViewController.swift */,
+				65BACD2C207A9F14006DBE1F /* TutorialViewController.swift */,
 				656FF12B20706C6F00D5831D /* HomeViewController.swift */,
 				65A57B1E2071667A00E2F8C1 /* GameTableViewCell.swift */,
 				654632312070834C00C9C763 /* CreateGameViewController.swift */,
@@ -655,6 +658,7 @@
 				65A57B1F2071667A00E2F8C1 /* GameTableViewCell.swift in Sources */,
 				65E2390E20710AB9004A5FFE /* SignInOptionsViewController.swift in Sources */,
 				712565BB207A12760068AF02 /* CalendarView.swift in Sources */,
+				65BACD2D207A9F14006DBE1F /* TutorialViewController.swift in Sources */,
 				65A57B2320717D0300E2F8C1 /* SignUpViewController.swift in Sources */,
 				654632322070834C00C9C763 /* CreateGameViewController.swift in Sources */,
 				65B178922071B7C400B35549 /* UserService.swift in Sources */,
@@ -851,7 +855,10 @@
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gameday.Gameday-V2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -868,7 +875,10 @@
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gameday.Gameday-V2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -885,7 +895,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -903,7 +917,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2Tests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -920,7 +938,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -937,7 +959,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8UC7TC45S2;
 				INFOPLIST_FILE = "Gameday-V2UITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.danieltian.Gameday-V2UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
