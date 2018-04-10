@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import NSObject_Rx
 import GoogleSignIn
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FirebaseApp.configure()
     GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 
+    // For iOS 10 display notification (sent via APNS)
+    UNUserNotificationCenter.current().delegate = self
+
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(
+      options: authOptions,
+      completionHandler: {_, _ in })
+
+    application.registerForRemoteNotifications()
+
     return true
   }
 
@@ -32,7 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                              annotation: [:])
   }
 
-  
+  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    Messaging.messaging().apnsToken = deviceToken
+    if let userId = Auth.auth().currentUser?.uid {
+      let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+      let tokenData = ["device_token": deviceTokenString]
+      db.collection("users").document(userId).updateData(tokenData)
+    }
+  }
 
   func applicationWillResignActive(_ application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -55,4 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
 }

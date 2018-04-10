@@ -212,6 +212,12 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
       startedDate.hour(self.startedTime.hour)
       startedDate.minute(self.startedTime.minute)
 
+      var endDate = startedDate.add(4.hours)
+      if endDate.isTomorrow {
+        endDate.hour(0)
+        endDate.minute(0)
+      }
+
       let gameRef = db.collection("game_posts").document()
       let data: [String: Any] = [
         "id": gameRef.documentID,
@@ -219,6 +225,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         "create_at": FieldValue.serverTimestamp(),
         "update_at": FieldValue.serverTimestamp(),
         "start_date": startedDate,
+        "end_date": endDate,
         "away_team": awayTeamModel.toJSON(),
         "home_team": homeTeamModel.toJSON(),
         "level": selectedLevelString,

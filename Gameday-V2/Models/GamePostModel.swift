@@ -40,6 +40,7 @@ struct GamePostModel: ImmutableMappable {
     createAt = try map.value("create_at")
     updateAt = try map.value("update_at")
     startDate = try map.value("start_date")
+    endDate = try map.value("end_date")
     awayTeam = try map.value("away_team")
     homeTeam = try map.value("home_team")
     level = try map.value("level")
@@ -49,13 +50,6 @@ struct GamePostModel: ImmutableMappable {
     likeUsersId = (try? map.value("like_users_id")) ?? [:]
     fansCount = (try? map.value("fans_count")) ?? 0
     fanUsersId = (try? map.value("fan_users_id")) ?? [:]
-
-    var temp = startDate.add(4.hours)
-    if temp.isTomorrow {
-      temp.hour(0)
-      temp.minute(0)
-    }
-    endDate = temp
   }
 
   var gameTitle: String {
