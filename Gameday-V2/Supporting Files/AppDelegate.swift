@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     Messaging.messaging().apnsToken = deviceToken
     if let userId = Auth.auth().currentUser?.uid {
-      let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+      let deviceTokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
       let tokenData = ["device_token": deviceTokenString]
       db.collection("users").document(userId).updateData(tokenData)
     }

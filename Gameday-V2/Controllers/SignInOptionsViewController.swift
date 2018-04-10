@@ -57,7 +57,7 @@ class SignInOptionsViewController: UIViewController {
     data["creation_date"] = user.metadata.creationDate
 
     if let deviceToken = Messaging.messaging().apnsToken {
-      let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+      let deviceTokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
       data["device_token"] = deviceTokenString
     }
 
