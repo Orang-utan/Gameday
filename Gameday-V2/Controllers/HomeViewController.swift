@@ -65,10 +65,6 @@ class HomeViewController: UIViewController {
     self.getDatas()
   }
     
-    @objc func showTutorial(notification: Notification){
-        print("FUCKCCKCKCK!!!Q!")
-    }
-    
     @objc func viewSwiped(_ sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case UISwipeGestureRecognizerDirection.right:
@@ -191,15 +187,16 @@ class HomeViewController: UIViewController {
     self.setupFilterDateTitle()
     self.loadFilter()
   }
-
-  @IBAction func openCalendarButtonPressed(_ sender: Any) {
-    let calendarView = CalendarView(frame: CGRect(x: 0, y: 0, width: 320, height: 350))
-    calendarView.selectDate = self.currentFilterDate
-    calendarView.delegate = self
-    let popover = Popover(options: [PopoverOption.arrowSize(CGSize(width: 50, height: 20))])
-    popover.show(calendarView, fromView: self.dateFilterButton.superview!)
-    self.popup = popover
-  }
+    
+    
+    @IBAction func openCalendarTapped(_ sender: UITapGestureRecognizer) {
+        let calendarView = CalendarView(frame: CGRect(x: 0, y: 0, width: 320, height: 350))
+        calendarView.selectDate = self.currentFilterDate
+        calendarView.delegate = self
+        let popover = Popover(options: [PopoverOption.arrowSize(CGSize(width: 50, height: 20))])
+        popover.show(calendarView, fromView: self.dateFilterButton.superview!)
+        self.popup = popover
+    }
   
 }
 

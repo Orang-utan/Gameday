@@ -49,11 +49,12 @@
                                                         <rect key="frame" x="33" y="0.0" width="83" height="32"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <state key="normal" title="Mon, Apr 9"/>
-                                                        <connections>
-                                                            <action selector="openCalendarButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tH2-UN-PiF"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Zi9-qb-LQa" appends="YES" id="stj-Ex-bf0"/>
+                                                </connections>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZQ-qZ-2tf">
                                                 <rect key="frame" x="310.5" y="8" width="40" height="40"/>
@@ -457,6 +458,11 @@
                 <tapGestureRecognizer id="qyQ-fR-hMT">
                     <connections>
                         <action selector="createGameTapped:" destination="BYZ-38-t0r" id="rIC-1N-xvm"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Zi9-qb-LQa">
+                    <connections>
+                        <action selector="openCalendarTapped:" destination="BYZ-38-t0r" id="rRQ-tJ-CaH"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
