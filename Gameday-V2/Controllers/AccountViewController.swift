@@ -17,7 +17,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
   @IBOutlet weak var usernameLabel: UILabel!
   @IBOutlet weak var userProfileImage: UIImageView!
 
-  @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var noPostView: UIView!
+    @IBOutlet weak var headerView: UIView!
   private let kTableHeaderHeight: CGFloat = 88
 
   private var games: [GamePostModel] = []
@@ -40,6 +41,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     userProfileImage.layer.cornerRadius = userProfileImage.bounds.height / 2
     userProfileImage.clipsToBounds = true
+    
+    noPostView.isHidden = true
 
     if let username = Auth.auth().currentUser?.displayName,
       let photoURL = Auth.auth().currentUser?.photoURL {
@@ -55,6 +58,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     super.viewWillAppear(animated)
 
     self.getDatas()
+
   }
 
   func updateHeaderView() {
@@ -100,6 +104,11 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         let sortedGames = sortedLiveGames + sortedUpcomingGames + sortedFinalGames
         self?.games = sortedGames
         self?.tableView.reloadData()
+        if games.count == 0 {
+            self?.noPostView.isHidden = false
+        } else {
+            self?.noPostView.isHidden = true
+        }
         }, onError: { (error) in
           print(error)
       })
@@ -195,6 +204,11 @@ extension AccountViewController: GameTableViewCellDelegate {
         self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: UITableViewRowAnimation.automatic)
         SVProgressHUD.showSuccess(withStatus: "Deleted")
         SVProgressHUD.dismiss(withDelay: 2)
+        if self.games.count == 0 {
+            self.noPostView.isHidden = false
+        } else {
+            self.noPostView.isHidden = true
+        }
         }, onError: { (error) in
           SVProgressHUD.showError(withStatus: error.localizedDescription)
       })

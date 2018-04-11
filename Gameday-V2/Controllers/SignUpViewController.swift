@@ -97,7 +97,30 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }
                 
             } else {
-                print("Error: \(error!.localizedDescription)")
+                var title = ""
+                var message = ""
+                
+                if let error = error as NSError? {
+                    guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                        print("there was an error logging in but it could not be matched with a firebase code")
+                        return
+                    }
+                    switch errorCode {
+                    case .weakPassword:
+                        title = "Oops..."
+                        message = "Your password must be more than 8 characters. Try again."
+                    case .emailAlreadyInUse:
+                        title = "Oops..."
+                        message = "Your already have an account. Please sign in instead."
+                    default:
+                        title = "Oops..."
+                        message = "An unknown occured just now. Please try again later."
+                    }
+                }
+                
+                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
                         

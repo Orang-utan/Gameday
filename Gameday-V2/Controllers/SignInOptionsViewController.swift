@@ -34,6 +34,7 @@ class SignInOptionsViewController: UIViewController {
 
     GIDSignIn.sharedInstance().delegate = self
     GIDSignIn.sharedInstance().uiDelegate = self
+
     
 
   }
@@ -76,7 +77,30 @@ class SignInOptionsViewController: UIViewController {
         self.updateUserInfoToFirestore()
         print("logged in")
       } else {
-        print("error logging in: \(error!.localizedDescription)")
+        var title = ""
+        var message = ""
+        
+        if let error = error as NSError? {
+            guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                print("there was an error logging in but it could not be matched with a firebase code")
+                return
+            }
+            switch errorCode {
+            case .wrongPassword:
+                title = "Oops..."
+                message = "Invalid email or password. Try again."
+            case .invalidEmail:
+                title = "Oops..."
+                message = "Invalid email. Try again."
+            default:
+                title = "Oops..."
+                message = "An unknown occured just now. Please try again later."
+            }
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
       }
     })
   }
@@ -116,7 +140,30 @@ extension SignInOptionsViewController: GIDSignInDelegate {
         
         print("logged in")
       } else {
-        print("error logging in: \(error!.localizedDescription)")
+        var title = ""
+        var message = ""
+
+        if let error = error as NSError? {
+            guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                print("there was an error logging in but it could not be matched with a firebase code")
+                return
+            }
+            switch errorCode {
+                case .wrongPassword:
+                    title = "Oops..."
+                    message = "Invalid email or password. Try again."
+                case .invalidEmail:
+                    title = "Oops..."
+                    message = "Invalid email. Try again."
+                default:
+                    title = "Oops..."
+                    message = "An unknown occured just now. Please try again later."
+            }
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Got it", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
       }
     }
   }

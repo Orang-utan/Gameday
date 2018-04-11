@@ -27,8 +27,16 @@ class DetailsViewController: UIViewController {
   private var localHomeScore = 0
   private var localAwayScore = 0
 
-  override func viewDidLoad() {
+    @IBOutlet weak var checkBox: Checkbox!
+    
+    override func viewDidLoad() {
+
     super.viewDidLoad()
+        
+    checkBox.checkmarkStyle = .square
+    checkBox.checkmarkStyle = .tick
+    checkBox.layer.masksToBounds = true
+    checkBox.layer.cornerRadius = 5
     
     homeScoreTextField.layer.cornerRadius = 7
     homeScoreTextField.clipsToBounds = true
@@ -93,6 +101,17 @@ class DetailsViewController: UIViewController {
   }
 
   @IBAction func saveScoreButtonPressed(_ sender: Any) {
+    //check if box is checked
+    if !checkBox.isChecked {
+        let alert = UIAlertController(title: "Wait a second!", message: "Please make sure the information you provided is accurate by checking the box.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {
+            action in
+            return
+        }))
+        self.present(alert, animated: true, completion: nil)
+        return
+    }
+    
     guard self.localHomeScore != self.model.homeTeam.score || self.localAwayScore != self.model.awayTeam.score else {
       SVProgressHUD.showError(withStatus: "You can't update same score")
       return

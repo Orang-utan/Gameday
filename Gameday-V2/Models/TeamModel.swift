@@ -41,7 +41,7 @@ struct TeamModel: ImmutableMappable {
       return #imageLiteral(resourceName: "Taft_School")
     } else if name.contains("miss porters") {
         return #imageLiteral(resourceName: "MissPorters")
-    } else if name.contains("northfield mount hermon") {
+    } else if name.contains("northfield") {
         return #imageLiteral(resourceName: "NMH")
     } else if name.contains("pomfret") {
         return #imageLiteral(resourceName: "Pomfret")
@@ -53,7 +53,7 @@ struct TeamModel: ImmutableMappable {
         return #imageLiteral(resourceName: "SouthKent")
     } else if name.contains("suffield") {
         return #imageLiteral(resourceName: "Suffield")
-    } else if name.contains("trinity-pawling") {
+    } else if name.contains("trinity") {
         return #imageLiteral(resourceName: "TP")
     } else if name.contains("westminster") {
         return #imageLiteral(resourceName: "Westminster")
@@ -65,9 +65,9 @@ struct TeamModel: ImmutableMappable {
         return #imageLiteral(resourceName: "Williston")
     } else if name.contains("worcester") {
         return #imageLiteral(resourceName: "Worcester")
-    } else if name.contains("alabany academy") {
+    } else if name.contains("alabany") {
         return #imageLiteral(resourceName: "AlbanyAcademy")
-    } else if name.contains("avon old farm") {
+    } else if name.contains("avon") {
         return #imageLiteral(resourceName: "Avon")
     } else if name.contains("brunswick") {
         return #imageLiteral(resourceName: "Brunswick")

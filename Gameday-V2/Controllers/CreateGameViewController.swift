@@ -28,7 +28,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var saveGame: UIButton!
   @IBOutlet weak var scrollView: UIScrollView!
 
-  let sportsChoices = ["Baseball", "Crew", "Lacrosse","Softball", "Track and Field"]
+  let sportsChoices = ["Baseball", "Crew", "Golf","Lacrosse","Softball", "Track","Track and Field"]
   let schoolFilters: [String] = ["Albany Academy", "Avon Old Farms", "Berkshire", "Brunswick", "Canterbury", "Cheshire", "Choate", "Deerfield", "Dexter", "Ethel Walker", "Greenwich", "Gunnery", "Hotchkiss", "IMS", "Kent", "Kingswoods Oxford", "Lyme-Old Lyme", "Loomis Chaffee", "Millbrook", "Miss Porters", "Northfield Mount Hermon", "Pomfret", "Rumsey Hall", "Salisbury", "Sacred Heart", "Suffield", "South Kent", "Taft", "Trinity-Pawling", "Westover", "Westminster", "Williston", "Worcester", "Wilbraham"]
 
   var selectedSportsString = ""

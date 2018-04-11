@@ -7,6 +7,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -146,14 +147,14 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oops. No game found. Tap &quot;+&quot; to create a game for your team!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0t-9c-A0O">
                                         <rect key="frame" x="46" y="242" width="283" height="59"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Referee" translatesAutoresizingMaskIntoConstraints="NO" id="P7s-zu-e2R">
                                         <rect key="frame" x="123" y="106" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,16 +224,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCU-8D-a6y">
-                                                <rect key="frame" x="32.5" y="40" width="310" height="25"/>
+                                                <rect key="frame" x="32" y="40" width="311" height="25"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjf-0w-hLM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="154" height="5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="155" height="25"/>
                                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AWAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fl-dC-xnx">
-                                                        <rect key="frame" x="154" y="0.0" width="155" height="5"/>
+                                                        <rect key="frame" x="155" y="0.0" width="156" height="25"/>
                                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="19"/>
                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -542,6 +543,7 @@
                                 <rect key="frame" x="67" y="347" width="240" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18960595129999999" green="0.79637485740000002" blue="0.60817915199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -627,26 +629,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial_Bg" translatesAutoresizingMaskIntoConstraints="NO" id="ytO-CZ-Fgv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.34901960784313724" green="0.87450980392156863" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fam-a2-S1q">
                                 <rect key="frame" x="90" y="524" width="195" height="48"/>
-                                <color key="backgroundColor" red="0.18960595129999999" green="0.79637485740000002" blue="0.60817915199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="DfT-5J-bEA"/>
                                     <constraint firstAttribute="width" constant="195" id="g0K-d5-efr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.18960595129999999" green="0.79637485740000002" blue="0.60817915199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="continueTapped:" destination="1Ve-8n-fXC" eventType="touchUpInside" id="EUM-wV-2ao"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMZ-xL-NV7">
+                                <rect key="frame" x="39" y="373" width="297" height="143"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FMZ-xL-NV7" secondAttribute="height" multiplier="27:13" id="CEw-Qt-yXc"/>
+                                    <constraint firstAttribute="height" constant="143" id="DYB-90-iMT"/>
+                                </constraints>
+                                <string key="text">Gameday is a fan-based community. That means fans are in charge of everything from creating games to updating scores. Thank you, and welcome!</string>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.34901960780000002" green="0.87450980389999999" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fA0-AB-wlX" firstAttribute="bottom" secondItem="fam-a2-S1q" secondAttribute="bottom" constant="95" id="3ud-II-anN"/>
+                            <constraint firstItem="fA0-AB-wlX" firstAttribute="trailing" secondItem="FMZ-xL-NV7" secondAttribute="trailing" constant="39" id="8vm-Xk-D8l"/>
+                            <constraint firstItem="ytO-CZ-Fgv" firstAttribute="bottom" secondItem="fA0-AB-wlX" secondAttribute="bottom" id="CWL-tS-Zsl"/>
+                            <constraint firstItem="ytO-CZ-Fgv" firstAttribute="trailing" secondItem="fA0-AB-wlX" secondAttribute="trailing" id="CuZ-MZ-1oi"/>
+                            <constraint firstItem="fam-a2-S1q" firstAttribute="top" secondItem="FMZ-xL-NV7" secondAttribute="bottom" constant="8" id="MF6-jP-nde"/>
+                            <constraint firstItem="ytO-CZ-Fgv" firstAttribute="top" secondItem="VyP-CS-jGV" secondAttribute="top" id="N9s-eS-UWW"/>
+                            <constraint firstItem="FMZ-xL-NV7" firstAttribute="leading" secondItem="fA0-AB-wlX" secondAttribute="leading" constant="39" id="bG7-K4-dVq"/>
                             <constraint firstItem="fam-a2-S1q" firstAttribute="centerX" secondItem="VyP-CS-jGV" secondAttribute="centerX" id="be1-uX-0yP"/>
+                            <constraint firstItem="ytO-CZ-Fgv" firstAttribute="leading" secondItem="fA0-AB-wlX" secondAttribute="leading" id="pbO-73-RBJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fA0-AB-wlX"/>
                     </view>
@@ -727,6 +751,7 @@
                                         <rect key="frame" x="67" y="377" width="240" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.18960595129999999" green="0.79637485740000002" blue="0.60817915199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <state key="normal" title="Create Account">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -834,7 +859,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CH3-Ro-mdp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CH3-Ro-mdp">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="o1j-75-g8s">
@@ -875,12 +900,33 @@
                                     </constraints>
                                 </view>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCG-yP-HEm">
+                                <rect key="frame" x="0.0" y="152" width="375" height="466"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oops. No game found. Tap &quot;+&quot; to create a game for your team!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzh-TI-6oi">
+                                        <rect key="frame" x="46" y="230" width="283" height="59"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Referee" translatesAutoresizingMaskIntoConstraints="NO" id="Zgk-eE-Qgc">
+                                        <rect key="frame" x="123" y="94" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CH3-Ro-mdp" firstAttribute="top" secondItem="F5I-A6-pVb" secondAttribute="top" id="0Aw-Kx-N4I"/>
+                            <constraint firstItem="F5I-A6-pVb" firstAttribute="bottom" secondItem="VCG-yP-HEm" secondAttribute="bottom" id="9Nl-5A-uge"/>
+                            <constraint firstItem="VCG-yP-HEm" firstAttribute="trailing" secondItem="F5I-A6-pVb" secondAttribute="trailing" id="IFa-le-tT7"/>
                             <constraint firstItem="CH3-Ro-mdp" firstAttribute="leading" secondItem="F5I-A6-pVb" secondAttribute="leading" id="INR-va-Ucp"/>
+                            <constraint firstItem="VCG-yP-HEm" firstAttribute="top" secondItem="F5I-A6-pVb" secondAttribute="top" constant="88" id="OEF-M2-xpk"/>
                             <constraint firstItem="CH3-Ro-mdp" firstAttribute="bottom" secondItem="F5I-A6-pVb" secondAttribute="bottom" id="jw5-hA-HqJ"/>
+                            <constraint firstItem="VCG-yP-HEm" firstAttribute="leading" secondItem="F5I-A6-pVb" secondAttribute="leading" id="ner-8d-yYU"/>
                             <constraint firstItem="CH3-Ro-mdp" firstAttribute="trailing" secondItem="F5I-A6-pVb" secondAttribute="trailing" id="rIj-jp-A7d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F5I-A6-pVb"/>
@@ -895,6 +941,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="headerView" destination="o1j-75-g8s" id="L6L-1x-gUh"/>
+                        <outlet property="noPostView" destination="VCG-yP-HEm" id="2jT-ho-hz0"/>
                         <outlet property="tableView" destination="CH3-Ro-mdp" id="bPe-7W-bS6"/>
                         <outlet property="userProfileImage" destination="gka-WG-Iyv" id="tzs-yZ-Zhc"/>
                         <outlet property="usernameLabel" destination="KMn-4D-ohC" id="Uag-Ns-8fq"/>
@@ -1013,7 +1060,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdK-B8-nBT">
-                                <rect key="frame" x="99" y="387" width="175" height="46"/>
+                                <rect key="frame" x="99" y="427" width="175" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18960595129999999" green="0.79637485740000002" blue="0.60817915199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
@@ -1071,6 +1118,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ng7-au-8QJ">
+                                <rect key="frame" x="46" y="382" width="282" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="All information provided is accurate." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUs-Fz-Gdp">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="26"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                        <color key="textColor" red="0.97037011380000004" green="0.37004393340000002" blue="0.43784666059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBu-Jz-Ch4" customClass="Checkbox" customModule="Gameday_V2" customModuleProvider="target">
+                                        <rect key="frame" x="256.5" y="0.0" width="26" height="26"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="TBu-Jz-Ch4" secondAttribute="height" multiplier="1:1" id="HFP-m2-Pjg"/>
+                                            <constraint firstAttribute="width" constant="26" id="WNp-Lz-u21"/>
+                                            <constraint firstAttribute="height" constant="26" id="ft4-sP-g0q"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.081647776069999997" green="0.1060485318" blue="0.10203700509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="dd2-iM-fZI"/>
@@ -1088,6 +1156,7 @@
                         <outlet property="awayScoreTextField" destination="Uzj-jV-dAs" id="xOZ-ax-DuE"/>
                         <outlet property="awaySubtractButton" destination="pof-sh-cnP" id="eUC-8r-hpL"/>
                         <outlet property="awayTeamNameLabel" destination="IPz-uA-M9u" id="z6q-of-VBw"/>
+                        <outlet property="checkBox" destination="TBu-Jz-Ch4" id="g4Y-TQ-5FS"/>
                         <outlet property="homeAddButton" destination="9iB-P3-5aU" id="3vY-Vo-B3G"/>
                         <outlet property="homeScoreTextField" destination="QQN-U8-UrO" id="b6O-5g-leC"/>
                         <outlet property="homeSubtractButton" destination="nmz-ha-8jH" id="Sf1-Or-geB"/>
@@ -1096,7 +1165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auM-2e-X5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3377" y="-559"/>
+            <point key="canvasLocation" x="3376.8000000000002" y="-559.07046476761627"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8rw-sl-cNN">
@@ -1256,6 +1325,7 @@
         <image name="Referee" width="256" height="256"/>
         <image name="Scoreboard" width="35" height="35"/>
         <image name="Search" width="25" height="25"/>
+        <image name="Tutorial_Bg" width="375" height="667"/>
         <image name="User" width="25" height="25"/>
         <image name="calendar_icon" width="30" height="30"/>
         <image name="left_arrow" width="20" height="20"/>
