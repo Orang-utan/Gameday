@@ -23,7 +23,6 @@ const db = admin.firestore();
 
 exports.minutely_job =
   functions.pubsub.topic('minutely-tick').onPublish((event) => {
-    console.log("This job is ran every minute!");
     var nowStartSecond = moment().second(0).toDate();
     var nowEndSecond = moment().second(59).toDate();
     const gamePostsRef = db.collection('game_posts')
@@ -31,13 +30,32 @@ exports.minutely_job =
       .where('start_date', '>=', nowStartSecond)
       .where('start_date', '<=', nowEndSecond)
       .get()
-      .then(snapshot => {
+    var endedGameRef = gamePostsRef
+      .where('end_date', '>=', nowStartSecond)
+      .where('end_date', '<=', nowEndSecond)
+      .get()
+
+    startedGameRef.then(snapshot => {
         snapshot.forEach(doc => {
           // Notification details.
           const payload = {
             notification: {
               title: 'Gameday',
               body: `${doc.get('level')} ${doc.get('sport_type')} has just began! Update the score on Gameday.`
+            }
+          };
+          console.log(payload);
+          admin.messaging().sendToTopic('game_started_and_game_ended', payload);
+        });
+        return endedGameRef;
+      })
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          // Notification details.
+          const payload = {
+            notification: {
+              title: 'Gameday',
+              body: `${doc.get('level')} ${doc.get('sport_type')} has just ended! Check the score on Gameday.`
             }
           };
           console.log(payload);
