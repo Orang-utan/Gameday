@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.estimatedRowHeight = 0
+    self.tableView.register(UINib(nibName: "GameTableViewCell", bundle: nil), forCellReuseIdentifier: "GameTableViewCell")
 
     UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes([NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white], for: .normal)
     self.searchBar.delegate = self
@@ -206,7 +207,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GameTableViewCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell", for: indexPath) as! GameTableViewCell
     cell.model = self.filteredGames[indexPath.row]
     cell.delegate = self
     return cell
@@ -253,31 +254,12 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: GameTableViewCellDelegate {
   func didPressedLikeButton(cell: UITableViewCell) {
     guard let index = self.tableView.indexPath(for: cell)?.row else { return }
-    var originalGame = self.filteredGames[index]
+    let originalGame = self.filteredGames[index]
     guard originalGame.isLiked == false else { return }
-    let gameRef = db.collection("game_posts").document(originalGame.id)
 
-    db.rx.runTransaction({ (transaction, _) -> Any? in
-      do {
-        guard let data = try transaction.getDocument(gameRef).data() else { return nil }
-        let game = try Mapper<GamePostModel>().map(JSON: data)
-        let newLikesCount = game.likesCount + 1
-        var newLikeUsersId = game.likeUsersId
-        newLikeUsersId[CURRENT_USER_ID] = true
-
-        originalGame.likesCount = newLikesCount
-        originalGame.likeUsersId = newLikeUsersId
-
-        transaction.updateData(["likes_count": newLikesCount,
-                                "like_users_id": newLikeUsersId], forDocument: gameRef)
-      } catch let error {
-        print(error)
-      }
-
-      return originalGame
-    })
-      .subscribe(onSuccess: { [weak self] (result) in
-        guard let `self` = self, let game = result as? GamePostModel else { return }
+    GamePostModel.likeGame(originalGame: originalGame)
+      .subscribe(onSuccess: { [weak self] (game) in
+        guard let `self` = self, let game = game else { return }
         self.filteredGames[index] = game
         if let index = self.games.index(where: { $0.id == game.id }) {
           self.games[index] = game
@@ -291,31 +273,11 @@ extension HomeViewController: GameTableViewCellDelegate {
 
   func didPressedRSVPButton(cell: UITableViewCell) {
     guard let index = self.tableView.indexPath(for: cell)?.row else { return }
-    var originalGame = self.filteredGames[index]
-    let gameRef = db.collection("game_posts").document(originalGame.id)
+    let originalGame = self.filteredGames[index]
 
-    db.rx.runTransaction({ (transaction, _) -> Any? in
-      do {
-        guard let data = try transaction.getDocument(gameRef).data() else { return nil }
-        let game = try Mapper<GamePostModel>().map(JSON: data)
-        var newFansCount = game.isFan ? game.fansCount - 1 : game.fansCount + 1
-        newFansCount = newFansCount < 0 ? 0 : newFansCount
-        var newFanUsersId = game.fanUsersId
-        newFanUsersId[CURRENT_USER_ID] = game.isFan ? nil : true
-
-        originalGame.fansCount = newFansCount
-        originalGame.fanUsersId = newFanUsersId
-
-        transaction.updateData(["fans_count": newFansCount,
-                                "fan_users_id": newFanUsersId], forDocument: gameRef)
-      } catch let error {
-        print(error)
-      }
-
-      return originalGame
-    })
-      .subscribe(onSuccess: { [weak self] (result) in
-        guard let `self` = self, let game = result as? GamePostModel else { return }
+    GamePostModel.rsvpGame(originalGame: originalGame)
+      .subscribe(onSuccess: { [weak self] (game) in
+        guard let `self` = self, let game = game else { return }
         self.filteredGames[index] = game
         if let index = self.games.index(where: { $0.id == game.id }) {
           self.games[index] = game
@@ -333,6 +295,28 @@ extension HomeViewController: GameTableViewCellDelegate {
     let vc = self.storyboard?.instantiateViewController(withIdentifier: "FansTableViewController") as! FansTableViewController
     vc.game = game
     self.navigationController?.pushViewController(vc, animated: true)
+  }
+
+  func didPressedDeleteButton(cell: UITableViewCell) {
+    guard let index = self.tableView.indexPath(for: cell)?.row else { return }
+    let game = self.filteredGames[index]
+    SVProgressHUD.show(withStatus: "Deleting...")
+
+    GamePostModel.deleteGame(game: game)
+      .subscribe(onSuccess: { [weak self] in
+        guard let `self` = self else { return }
+
+        self.filteredGames.remove(at: index)
+        if let index = self.games.index(where: { $0.id == game.id }) {
+          self.games.remove(at: index)
+        }
+        self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: UITableViewRowAnimation.automatic)
+        SVProgressHUD.showSuccess(withStatus: "Deleted")
+        SVProgressHUD.dismiss(withDelay: 2)
+        }, onError: { (error) in
+          SVProgressHUD.showError(withStatus: error.localizedDescription)
+      })
+      .disposed(by: rx.disposeBag)
   }
 }
 

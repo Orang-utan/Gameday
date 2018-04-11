@@ -14,6 +14,7 @@ protocol GameTableViewCellDelegate: class {
   func didPressedLikeButton(cell: UITableViewCell)
   func didPressedRSVPButton(cell: UITableViewCell)
   func didPressedRSVPLabel(cell: UITableViewCell)
+  func didPressedDeleteButton(cell: UITableViewCell)
 }
 
 class GameTableViewCell: UITableViewCell {
@@ -134,7 +135,8 @@ class GameTableViewCell: UITableViewCell {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapGestureOnRSVPLabel))
     self.rsvpLabel.isUserInteractionEnabled = true
     self.rsvpLabel.addGestureRecognizer(tapGesture)
-    
+
+    self.deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: UIControlEvents.touchUpInside)
   }
 
     
@@ -201,4 +203,13 @@ class GameTableViewCell: UITableViewCell {
     self.delegate?.didPressedRSVPLabel(cell: self)
   }
 
+  @objc func deleteButtonPressed() {
+    let alert = UIAlertController(title: "Gameday", message: "Are you sure want to delete this game post?", preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+    let yes = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (_) in
+      self.delegate?.didPressedDeleteButton(cell: self)
+    }
+    alert.addAction(yes)
+    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+  }
 }

@@ -211,6 +211,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
       var startedDate = self.startedDate!
       startedDate.hour(self.startedTime.hour)
       startedDate.minute(self.startedTime.minute)
+      startedDate.second(0)
 
       var endDate = startedDate.add(4.hours)
       if endDate.isTomorrow {
