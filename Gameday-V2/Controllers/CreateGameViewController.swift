@@ -26,8 +26,8 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var locationTextField: SearchTextField!
   @IBOutlet weak var checkBox: Checkbox!
   @IBOutlet weak var saveGame: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
+  @IBOutlet weak var scrollView: UIScrollView!
+
   let sportsChoices = ["Baseball", "Crew", "Lacrosse","Softball", "Track and Field"]
   let schoolFilters: [String] = ["Albany Academy", "Avon Old Farms", "Berkshire", "Brunswick", "Canterbury", "Cheshire", "Choate", "Deerfield", "Dexter", "Ethel Walker", "Greenwich", "Gunnery", "Hotchkiss", "IMS", "Kent", "Kingswoods Oxford", "Lyme-Old Lyme", "Loomis Chaffee", "Millbrook", "Miss Porters", "Northfield Mount Hermon", "Pomfret", "Rumsey Hall", "Salisbury", "Sacred Heart", "Suffield", "South Kent", "Taft", "Trinity-Pawling", "Westover", "Westminster", "Williston", "Worcester", "Wilbraham"]
 
@@ -98,17 +98,17 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
     }
     
     if textField == locationTextField {
-        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+      scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
     }
     
     return true
   }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == locationTextField {
-            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        }
+
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    if textField == locationTextField {
+      scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
+  }
 
   @IBAction func sportsTextFieldTapped(_ sender: UITapGestureRecognizer) {
     view.endEditing(true)
