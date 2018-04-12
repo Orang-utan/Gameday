@@ -29,7 +29,7 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var scrollView: UIScrollView!
 
   let sportsChoices = ["Baseball", "Crew", "Golf","Lacrosse","Softball", "Track","Track and Field"]
-  let schoolFilters: [String] = ["Albany Academy", "Avon Old Farms", "Berkshire", "Brunswick", "Canterbury", "Cheshire", "Choate", "Deerfield", "Dexter", "Ethel Walker", "Greenwich", "Gunnery", "Hotchkiss", "IMS", "Kent", "Kingswoods Oxford", "Lyme-Old Lyme", "Loomis Chaffee", "Millbrook", "Miss Porters", "Northfield Mount Hermon", "Pomfret", "Rumsey Hall", "Salisbury", "Sacred Heart", "Suffield", "South Kent", "Taft", "Trinity-Pawling", "Westover", "Westminster", "Williston", "Worcester", "Wilbraham"]
+  let schoolFilters: [String] = ["Albany Acad.", "Avon", "Berkshire", "Brunswick", "Canterbury", "Cheshire", "Choate", "Deerfield", "Dexter", "Ethel Walker", "Greenwich", "Gunnery", "Hotchkiss", "IMS", "Kent", "Kingswoods", "Lyme-Old", "Loomis", "Millbrook", "Miss Porters", "Northfield", "Pomfret", "Rumsey Hall", "Salisbury", "Sacred Heart", "Suffield", "South Kent", "Taft", "Trinity", "Westover", "Westminster", "Williston", "Worcester", "Wilbraham"]
 
   var selectedSportsString = ""
   var selectedSportsRow = 0
@@ -49,6 +49,9 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
 
     homeTextField.borderStyle = UITextBorderStyle.roundedRect
     awayTextField.borderStyle = UITextBorderStyle.roundedRect
+
+    homeTextField.startSuggestingInmediately = true
+    awayTextField.startSuggestingInmediately = true
 
     homeTextField.filterStrings(schoolFilters)
     awayTextField.filterStrings(schoolFilters)
@@ -204,6 +207,16 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
         return
       }
+        
+        if place.count >= 16 {
+            let alert = UIAlertController(title: "Wait a second!", message: "Please make sure the location text has less than 16 characters.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {
+                action in
+                return
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
 
       let awayTeamModel = TeamModel(name: awayTeam.capitalized, score: 0)
       let homeTeamModel = TeamModel(name: homeTeam.capitalized, score: 0)
@@ -237,6 +250,12 @@ class CreateGameViewController: UIViewController, UITextFieldDelegate {
       SVProgressHUD.show()
       gameRef.setData(data) { (error) in
         SVProgressHUD.dismiss()
+        let banner = StatusBarNotificationBanner(title: "Your game was susccesfully posted.", style: .success)
+        banner.show()
+        banner.autoDismiss = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            banner.dismiss()
+        })
         if let error = error { print(error) }
         self.dismiss(animated: true, completion: nil)
       }

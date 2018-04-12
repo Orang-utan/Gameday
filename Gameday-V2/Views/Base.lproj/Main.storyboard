@@ -641,7 +641,7 @@
                                     <constraint firstAttribute="width" constant="195" id="g0K-d5-efr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <state key="normal" title="Continue">
+                                <state key="normal" title="I Agree">
                                     <color key="titleColor" red="0.18960595129999999" green="0.79637485740000002" blue="0.60817915199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1119,11 +1119,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ng7-au-8QJ">
-                                <rect key="frame" x="46" y="382" width="282" height="26"/>
+                                <rect key="frame" x="45" y="379" width="283" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="All information provided is accurate." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUs-Fz-Gdp">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="248.5" height="26"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
                                         <color key="textColor" red="0.97037011380000004" green="0.37004393340000002" blue="0.43784666059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

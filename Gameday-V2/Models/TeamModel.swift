@@ -81,7 +81,7 @@ struct TeamModel: ImmutableMappable {
         return #imageLiteral(resourceName: "Deerfield")
     } else if name.contains("dexter") {
         return #imageLiteral(resourceName: "DexterSouthfield")
-    } else if name.contains("ethel walker") {
+    } else if name.contains("ethel") {
         return #imageLiteral(resourceName: "Ethel-Walker")
     } else if name.contains("greenwich") {
         return #imageLiteral(resourceName: "GreenwichAcademy")

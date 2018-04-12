@@ -36,7 +36,10 @@ class SignInOptionsViewController: UIViewController {
     GIDSignIn.sharedInstance().uiDelegate = self
 
     
-
+    if Auth.auth().currentUser != nil {
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+        UIApplication.shared.delegate?.window??.rootViewController = controller
+    }
   }
 
   private func pushToHomeControllerIfNeeded() {
@@ -45,8 +48,8 @@ class SignInOptionsViewController: UIViewController {
     
     performSegue(withIdentifier: "signInToTutorialSegue", sender: self)
     
-    let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-    UIApplication.shared.delegate?.window??.rootViewController = controller
+//    let controller = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+//    UIApplication.shared.delegate?.window??.rootViewController = controller
   }
 
   private func updateUserInfoToFirestore() {
