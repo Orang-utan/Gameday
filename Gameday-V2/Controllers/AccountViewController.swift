@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import RxSwift
+import NotificationBannerSwift
 
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
@@ -125,6 +126,39 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.games.count
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let model = self.games[indexPath.row]
+    guard model.status == MatchStatus.live else {
+      var banner_title = ""
+      if model.status == MatchStatus.upcomming {
+        banner_title = "Game hasn't started yet. Please come back later."
+      } else if model.status == MatchStatus.final {
+        banner_title = "Game has already ended."
+      }
+      let banner = StatusBarNotificationBanner(title: banner_title, style: .warning)
+      let numberOfBanners = NotificationBannerQueue.default.numberOfBanners
+      print(numberOfBanners)
+      if numberOfBanners == 1 {
+        return
+      }
+      banner.dismiss()
+      banner.autoDismiss = false
+      banner.onTap = {
+        banner.dismiss()
+      }
+      banner.show()
+      DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+        banner.dismiss()
+      })
+
+      return
+    }
+    let detailNaviVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsNavigationController") as! UINavigationController
+    let detailVC = detailNaviVC.viewControllers.first as! DetailsViewController
+    detailVC.model = model
+    self.present(detailNaviVC, animated: true, completion: nil)
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
