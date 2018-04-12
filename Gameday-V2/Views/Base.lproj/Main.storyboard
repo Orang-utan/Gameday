@@ -1119,11 +1119,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ng7-au-8QJ">
-<<<<<<< HEAD
-                                <rect key="frame" x="45" y="379" width="283" height="26"/>
-=======
+
                                 <rect key="frame" x="46" y="344" width="282" height="26"/>
->>>>>>> 06d9253c1065995b69eaf7e4177c661d1024f75c
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="All information provided is accurate." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUs-Fz-Gdp">
