@@ -866,7 +866,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FootballBackground" translatesAutoresizingMaskIntoConstraints="NO" id="tBt-Pr-95r">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account_Bg" translatesAutoresizingMaskIntoConstraints="NO" id="tBt-Pr-95r">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Neutral User Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="gka-WG-Iyv">
@@ -1119,8 +1119,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ng7-au-8QJ">
-
-                                <rect key="frame" x="46" y="344" width="282" height="26"/>
+                                <rect key="frame" x="46" y="378" width="282" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="All information provided is accurate." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUs-Fz-Gdp">
@@ -1314,11 +1313,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Account_Bg" width="2817" height="1171"/>
         <image name="Add" width="64" height="64"/>
         <image name="Back" width="25" height="25"/>
         <image name="Cancel" width="25" height="25"/>
         <image name="Exit" width="25" height="25"/>
-        <image name="FootballBackground" width="972" height="777"/>
         <image name="Gameday Logo" width="217" height="69"/>
         <image name="Neutral User Profile Picture" width="128" height="128"/>
         <image name="Profile Picture" width="64" height="64"/>

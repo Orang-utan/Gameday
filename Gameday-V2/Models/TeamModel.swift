@@ -45,7 +45,7 @@ struct TeamModel: ImmutableMappable {
         return #imageLiteral(resourceName: "NMH")
     } else if name.contains("pomfret") {
         return #imageLiteral(resourceName: "Pomfret")
-    } else if name.contains("rumsey hall") {
+    } else if name.contains("rumsey") {
         return #imageLiteral(resourceName: "RumseyHall")
     } else if name.contains("sacred heart") {
         return #imageLiteral(resourceName: "SacredHeartG")
@@ -65,7 +65,7 @@ struct TeamModel: ImmutableMappable {
         return #imageLiteral(resourceName: "Williston")
     } else if name.contains("worcester") {
         return #imageLiteral(resourceName: "Worcester")
-    } else if name.contains("alabany") {
+    } else if name.contains("albany") {
         return #imageLiteral(resourceName: "AlbanyAcademy")
     } else if name.contains("avon") {
         return #imageLiteral(resourceName: "Avon")
